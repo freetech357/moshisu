@@ -1,0 +1,62 @@
+<section id="dist-login-component">
+  <div class="h-100">
+    <div class="row h-100 w-100 ms-0">
+      <div class="col-12 col-lg-6 bg_img_auth" style="background-color: #ffffff;">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+          <div class="auth-form">
+            <div class="row">
+              <div class="col-12 col-lg-12">
+                <h4><strong>Verify OTP</strong></h4>
+                <p style="font-size: 0.85rem;">We have sent an OTP to your registered mobile number ({{ maskedMobileNumber }}). This code is crucial for your security and will help us ensure that you are the authorized user of this account. Please enter the code below to verify your identity and complete your login process.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-lg-12 mx-auto">
+                <form [formGroup]="otpForm" class="mt-3" (submit)="submitOTPForm()">
+                    <div class="form-group mb-3">
+                      <label for="otp" class="form-label">OTP</label>
+                      <div class="input-group">
+                        <input type="number" min="0" name="otp" id="otp" oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" maxlength ="6" formControlName="otp" class="form-control" placeholder="Enter OTP">
+                      </div>
+                      <app-form-error [field]="otpForm.controls.otp"></app-form-error>
+                      <span [ngStyle]="{'color': remainingTime === 'OTP has expired' ? 'red' : 'black'}" style="font-size: 13px;" class="mt-1">
+                        {{ remainingTime }}
+                      </span>
+                    </div>
+
+
+                    <div class="form-group mb-3">
+                        @if (!isOTPResendInProgress) {
+                            <a class="form-label" (click)="resendOtp()">Resend OTP</a>
+                        }@else {
+                            <span class="form-label">Resending OTP.. <i class="fa-solid fa-spinner fa-spin ms-1"></i></span>
+                          }
+                    </div>
+                    <div>
+                      @if (!isFormSubmitInProgress) {
+                        <button type="submit" class="btn w-100 login-btn bg-btn">
+                          Verify OTP <i class="fa-solid fa-arrow-right ms-1"></i>
+                        </button>
+                      } @else {
+                        <button type="button" disabled class="btn w-100 login-btn bg-btn btn-warning">
+                          Verifing.. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                        </button>
+                      }
+                    </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 px-lg-0">
+        <div class="logo_top text-center">
+
+        </div>
+        <div class="login-container-left">
+          <img src="/assets/images/icons/Login_SY.png" alt="" class="img-fluid vh-100 w-100 object-cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

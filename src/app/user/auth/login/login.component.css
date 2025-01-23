@@ -1,0 +1,120 @@
+
+
+/* .bg-shadow{
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+.input-group-text {
+  padding: .6rem .5rem;
+} */
+
+.left-pane {
+  background-color: #e98209;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.left-pane img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+.right-pane {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-color: #efefef !important;
+
+}
+
+.card {
+  width: 100%;
+  max-width: 450px;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.button-bg {
+  background-color: #D56600 !important;
+  color: white !important;
+  font-weight: 600 !important;
+}
+.back-buton-bg{
+  border: 1px solid #DF8B3F !important;
+  background-color: white !important;
+  color: #D56600 !important;
+  font-weight: 600 !important;
+}
+
+.button-bg:hover {
+  background-color: #fa8805 !important;
+  color: azure;
+}
+
+/* Global CSS for padding */
+input.form-control {
+  padding: 8px 10px 8px 10px;
+  border: 1px solid #777777
+}
+
+img.form-control {
+  padding: 10px;
+  border: 1px solid #777777
+}
+
+/* Decrease size of placeholder and input value */
+input.form-control::placeholder {
+  font-size: 14px;
+}
+
+
+/* Style for the captcha container */
+.captcha-container {
+  display: flex;
+  align-items: center;
+}
+
+/* Style for the captcha input field */
+#captcha {
+  border: 1px solid #777777;
+  border-radius: 4px;
+  /* Match the input field's border radius */
+}
+
+/* Style for the captcha image */
+.captcha-container img {
+  border: 1px solid #777777;
+  /* Match the input field's border */
+  border-radius: 4px;
+  /* Match the input field's border radius */
+  margin-left: 8px;
+  /* Space between input and captcha */
+}
+
+@media (max-width: 1024px) and (min-width: 769px) {
+  .left-pane {
+      display: flex;
+  }
+
+  .right-pane {
+      padding: 40px 20px;
+  }
+
+  .card {
+      width: 80%;
+      margin: 0 auto;
+  }
+
+  h2 {
+      font-size: 1.4rem;
+  }
+
+  .btn {
+      padding: 0.5rem;
+      font-size: 1rem;
+  }
+}

@@ -1,0 +1,181 @@
+/* You can add global styles to this file, and also import other style files */
+main.portal-on {
+    margin-top: 60px;
+  }
+.ind_code {
+    border-radius: 5px 0 0 5px;
+    background: #d9d9d9;
+}
+.view_ps {
+    border-radius: 0 5px 5px 0;
+    background: #d9d9d9;
+    padding: 11px !important;
+}
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.bg_img_auth {
+    background-image: url(/assets/images/icons/Element_SY.png);
+    background-size: 100%;
+    background-position: bottom;
+    background-repeat: no-repeat;
+  }
+  a.user_reg {
+    background: #1f1e1d;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+.sidebar-menus {
+    padding-top: 20px;
+}
+.card-header-bg{
+    background-color: #ffe8d0;
+    color: black;
+    font-weight: bold;
+}
+.bg-btn{
+    background: #ff9003 !important;
+    color: #fff;
+    font-weight: 700;
+}
+
+.cancel-btn{
+   background-color: #dedede;
+   color: #000;
+   font-weight: 700;
+}
+
+.cancel-btn:hover
+{
+    background: #ff9003;
+    color: white;
+
+}
+
+.login-container-left {
+    background-color: #ff9003;
+  }
+  .login-btn {
+    padding-top: 0.7rem;
+    padding-bottom: 0.7rem;
+    border-radius: 10px;
+    color: #ffffff !important;
+    font-weight: 400 !important;
+  }
+  .auth-form {
+    width: 100%;
+    max-width: 450px;
+  }
+.bg-btn:hover{
+    background: #ff9710;
+    color: #fff;
+}
+.bg-header{
+    background: #fd7b03;
+}
+/* .table > thead th {
+    text-align: center;
+    background: rgba(1, 69, 138, 1);
+    color: #fff;
+} */
+.table-responsive{
+    padding: 0;
+}
+/* additional css */
+
+.form-group label {
+    font-size: 0.865rem;
+    font-weight: 650;
+    color: #5a5a5a;
+    /* Reduces label font size to 14px */
+}
+
+::placeholder {
+    font-size: 0.875rem;
+    /* Reduces placeholder font size to 14px */
+}
+
+.form-control:not([type="checkbox"]) {
+    font-size: 0.875rem;
+}
+
+input.form-control {
+    padding: 8px 15px;
+    /* Adjusted padding */
+}
+
+select.form-select {
+    padding: 8px 15px;
+    /* Adjusted padding */
+}
+
+.alert {
+    padding: 7px 15px;
+    /* Adjust the values as needed */
+}
+@media (max-width:766px) {
+    section#superadmin-sidebar-component {
+        z-index: 1;
+    }
+    main.portal-on.sidebar-on {
+        margin-left: 0 !important;
+    }
+    footer#superadmin-sidebar-footer {
+        margin-left: 0 !important;
+    }
+}
+
+.badge-success {
+  background-color: #38b000;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.badge-danger {
+  background-color: #d80032;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.badge-info {
+  background-color: #0466c8;
+  color: #fff;
+  padding: 0.25rem 0.5rem;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.btn-primary {
+  background-color: #01497c;
+  color: #fff;
+  border-color: #01497c;
+}
+
+.btn-success {
+  background-color: #38b000 !important;
+  color: #fff;
+  border-color: #38b000 !important;
+}
+
+/* .input-group-text {
+  background-color: #1f1e1d;
+  color: #fff;
+  padding-left: 0.6rem !important;
+  padding-right: 0.6rem !important;
+} */

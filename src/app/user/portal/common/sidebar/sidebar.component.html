@@ -18,7 +18,11 @@
           <i class="fa-solid fa-address-card me-2"></i> JJB Registration
         </a>
       </li>
-
+      <li class="nav-item" *ngIf="hasRoleId(16)">
+        <a routerLink="/portal/jjb/custody-registration" routerLinkActive="active" class="nav-link collapsed">
+          <i class="fa-solid fa-address-card me-2"></i> Custody Registration
+        </a>
+      </li>
       <!-- @if (app_details) {
         @if (app_details.is_submitted != true) {
           <li class="nav-item">

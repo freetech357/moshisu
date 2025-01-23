@@ -1,0 +1,120 @@
+<section id="superadmin-department-list-component" class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex align-items-center">
+                <h1 class="page-title mb-0">Permission</h1>
+            </div>
+            <div class="col-6 col-md-6 text-end">
+                <a routerLink="/superadmin/portal/user-role">
+                    <button class="btn cancel-btn"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+                </a>
+            </div>
+        </div>
+        <div class="row w-100 ms-0">
+        <div class="form-content">
+            <div class="text-end mb-2 d-flex align-items-center" style="flex-wrap: wrap; gap: 0.5rem;">
+              <button class="btn btn-success btn-sm bg-success" (click)="grantAllAccess()"><i class="fa-solid fa-check me-1"></i> Grant All Access</button>
+              <button class="btn btn-danger btn-sm" (click)="revokeAllAccess()"><i class="fa-solid fa-times me-1"></i> Revoke All Access</button>
+            </div>
+            <form [formGroup]="myForm"  (submit)="onSubmit()">
+                <div class="table-responsive">
+                <table class="table table-bordered" aria-describedby="">
+                    <thead>
+                        <tr>
+                            <th style="min-width: 200px;">Module Name</th>
+                            <!-- <th style="min-width: 100px;">Action</th> -->
+                            <!-- @for (item of actions; track $index) {
+                                <th style="min-width: 130px;">{{ item.module_name }}</th>
+                            } -->
+                            <th>View</th>
+                            <th>List</th>
+                            <th>Add</th>
+                            <th>Update</th>       
+                        </tr>
+                    </thead>
+                    <tbody class="text-center">
+                        @for (item of modules; track $index) {
+                            <tr class="table-row-{{ item.id }}">
+                                <td class="text-center" style="vertical-align: middle;">
+                                    {{ item.module_alias }}
+                                    <!-- -- 
+                                    {{ item.module_name }} -->
+                                </td>
+                                <!-- <td class="text-center">
+                                  <button (click)="grantAllAccessForModule(item.id)" type="button" title="Grant Access to All Actions" class="btn btn-success bg-success btn-sm"><i class="fa-solid fa-check"></i></button>
+                                  <button (click)="revokeAllAccessForModule(item.id)" type="button" title="Revoke Access from All Actions" class="btn btn-danger btn-sm ms-1"><i class="fa-solid fa-times"></i></button>
+                                </td> -->
+                                <!-- @for (actionItem of actions; track $index) {
+                                    <td class="text-center" style="vertical-align: middle;">
+                                    @for (moduleActionDetails of item.action_ids_detail; track $index) {
+                                        @if (actionItem.id == moduleActionDetails.action_id) {
+                                            <input type="checkbox" name="module_rbac_{{ item.id }}[{{ actionItem.id }}]" id="module_rbac_{{ item.id }}_{{ actionItem.id }}">
+                                        }
+                                    }
+                                    </td>
+                                } -->
+                                <td> 
+                                    <!-- {{ item.module_name +"_"+"view" }} -->
+                                    @if(hasPermission(item.module_name +"_"+"view"))
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_view" value="{{item.module_name}}_view" checked>
+                                    }
+                                    @else 
+                                    {
+                                        <input type="checkbox"  name="{{item.module_name}}_view" value="{{item.module_name}}_view">
+                                    }
+                                </td>
+                                <td> 
+                                    @if(hasPermission(item.module_name +"_"+"list"))
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_list" value="{{item.module_name}}_list" checked>
+                                    
+                                    }
+                                    @else 
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_list" value="{{item.module_name}}_list">
+                                    }
+                                </td>
+                                <td> 
+                                    @if(hasPermission(item.module_name +"_"+"add"))
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_add" value="{{item.module_name}}_add" checked>
+                                    }
+                                    @else 
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_add" value="{{item.module_name}}_add">
+                                    }
+                                </td>
+
+                                <td> 
+                                    @if(hasPermission(item.module_name +"_"+"update"))
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_update" value="{{item.module_name}}_update" checked>
+                                    }
+                                    @else 
+                                    {
+                                        <input type="checkbox" name="{{item.module_name}}_update" value="{{item.module_name}}_update">
+                                    }
+                                </td>
+                                
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+                <div class="row my-3">
+                    <div class="col-sm-6 col-md-6">
+                    @if (!isFormSubmitInProgress) {
+                        <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Update</button>
+                    } @else {
+                        <button type="button" disabled class="btn bg-btn">
+                        Updating .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                        </button>
+                    }
+                    </div>
+                </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</section>

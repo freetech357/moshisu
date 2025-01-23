@@ -1,0 +1,123 @@
+<section id="superadmin-manage-users-add-component" class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-6 d-flex align-items-center">
+          <h1 class="page-title mb-0">Edit Module</h1>
+      </div>
+      <div class="col-6 col-md-6 text-end">
+          <a routerLink="/superadmin/portal/module-master">
+            <button class="btn cancel-btn"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+        </a>
+      </div>
+    </div>
+    <div class="">
+      <div class="row">
+        <div class="col-sm-6 col-md-12">
+          <form [formGroup]="userManageFormEdit" (submit)="dataUserEditSubmit()">
+            <!-- <div class="form-content mb-3 pb-2">
+              <div class="row">
+                  <div class="col-12 col-md- sub-title">
+                      <h5 class="sub-title">User Account Details</h5>
+                      <hr>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                  <div class="col-sm-6 col-md-4 mb-2">
+                    <label class="form-label" for="user_role">Select Account Type <span class="text-danger">*</span></label>
+                    <select formControlName="user_role" id="user_role" class="form-control form-select">
+                        <option value="">Select</option>
+                        @if(authService.userDetail?.role?.id == 5){
+                          @for (role of roles; track role.id) {
+                            <option value="{{ role.id }}" *ngIf="role.id != '5' && role.id != '1'">{{ role.role_name }}</option>
+                            }
+                        }@else {
+                          @for (role of roles; track role.id) {
+                            <option value="{{ role.id }}" *ngIf="role.id != '1'">{{ role.role_name }}</option>
+                            }
+                        }
+                    </select>
+                    <app-form-error [field]="userManageFormEdit.controls.user_role"></app-form-error>
+                  </div>
+                  
+              </div>
+            </div> -->
+          <!-- <div class="form-content mb-3 pb-2">
+              <div class="row">
+                  <div class="col-12 col-md- sub-title">
+                      <h5 class="sub-title">User Details</h5>
+                      <hr>
+                  </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-4 mb-2">
+                  <label class="form-label" for="first_name">First Name <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="first_name" id="first_name" class="form-control">
+                  <app-form-error [field]="userManageFormEdit.controls.first_name"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-2">
+                  <label class="form-label" for="last_name">Last Name <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="last_name" id="last_name" class="form-control">
+                  <app-form-error [field]="userManageFormEdit.controls.last_name"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-2">
+                    <label class="form-label" for="phone">Mobile <span class="text-danger">*</span></label>
+                    <input type="tel" formControlName="phone" id="phone" class="form-control">
+                    <app-form-error [field]="userManageFormEdit.controls.phone"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-4 mb-2">
+                  <label class="form-label" for="email">Email <span class="text-danger">*</span></label>
+                  <input type="email" formControlName="email" id="email" class="form-control">
+                  <app-form-error [field]="userManageFormEdit.controls.email"></app-form-error>
+                </div>
+              </div>
+          </div> -->
+          <div class="form-content mb-3 pb-2">
+            <div class="row">
+                <div class="col-12 col-md- sub-title">
+                    <h5 class="sub-title">Module Name</h5>
+                    <hr>
+                </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-6 col-md-4 mb-2">
+                  <label class="form-label" for="username">Module Name <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="username" id="username" class="form-control" autocomplete="new-username">
+                  <app-form-error [field]="userManageFormEdit.controls.username"></app-form-error>
+              </div>
+
+              <div class="col-sm-6 col-md-4 mb-2">
+                <label class="form-label" for="status">Status<span class="text-danger">*</span></label>
+                <select class="form-control" formControlName="modulestatus" id="modulestatus" [(ngModel)]="status">
+                  @if (status == 1) {
+                    <option value="1" selected>Active </option>
+                    <option value="0">Inactive </option>
+                  }
+                  @else
+                  {
+                    <option value="1" >Active </option>
+                    <option value="0" selected>Inactive </option>
+                  }
+                </select>
+                <app-form-error [field]="userManageFormEdit.controls.status"></app-form-error>
+             </div>
+
+            </div>
+          </div>
+            
+            <div class="row mb-3">
+              <div class="col-sm-6 col-md-6">
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Submit</button>
+                } @else {
+                  <button type="button" disabled class="btn bg-btn">
+                    Submitting .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

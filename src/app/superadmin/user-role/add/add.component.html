@@ -1,0 +1,68 @@
+<section id="superadmin-user-role-add-component" class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex align-items-center">
+            <h1 class="page-title mb-0">Add User Role</h1>
+        </div>
+        <div class="col-6 col-md-6 text-end">
+            <a routerLink="/superadmin/portal/user-role">
+                <button class="btn cancel-btn"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+            </a>
+        </div>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-sm-6 col-md-12">
+            <form [formGroup]="userRoleForm" (submit)="roleSubmit()">
+              <div class="row mb-3">
+                <!-- <div class="col-sm-6 col-md-4 form-group">
+                  <label class="form-label" for="user_level">User Level <span class="text-danger">*</span></label>
+                  <select formControlName="user_level" id="user_level" class="form-control form-select">
+                      <option value="">Select User Level</option>
+                      <option value="1">State</option>
+                      <option value="2">District</option>
+                  </select>
+                  <app-form-error [field]="userRoleForm.controls.user_level"></app-form-error>
+                </div> -->
+                <div class="col-sm-6 col-md-4 form-group">
+                  <label class="form-label" for="organization">Organization <span class="text-danger">*</span></label>
+                  <select formControlName="organization" id="organization" class="form-control form-select">
+                      <option value="">Select Organization</option>
+                      @for (organization of organizations; track organization.id) {
+                        <option value="{{ organization.id }}">{{ organization.organization_name }}</option>
+                        }
+                  </select>
+                  <app-form-error [field]="userRoleForm.controls.organization"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-4 form-group">
+                  <label class="form-label" for="reporting_to">Reporting Designation </label>
+                  <select formControlName="reporting_to" id="reporting_to" class="form-control form-select">
+                      <option value="">Select Reporting Designation</option>
+                      @for (role of roles; track role.id) {
+                        <option value="{{ role.id }}">{{ role.name }}</option>
+                        }
+                  </select>
+                </div>
+                <div class="col-sm-6 col-md-4 form-group">
+                  <label class="form-label" for="role_name">Designation/User Role <span class="text-danger">*</span></label>
+                  <input type="text" id="role_name" formControlName="role_name" class="form-control" placeholder="Enter user Role">
+                  <app-form-error [field]="userRoleForm.controls.role_name"></app-form-error>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6">                  
+                  @if (!isFormSubmitInProgress) {
+                    <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Submit</button>
+                  } @else {
+                    <button type="button" disabled class="btn bg-btn">
+                      Submitting .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                    </button>
+                  }
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

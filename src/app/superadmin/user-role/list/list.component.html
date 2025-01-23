@@ -1,0 +1,53 @@
+<section id="superadmin-user-role-list-component" class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex align-items-center">
+                <h1 class="page-title mb-0">Roles & Permissions</h1>
+            </div>
+            <div class="col-6 col-md-6 text-end ">
+                <a routerLink="/superadmin/portal/user-role/add">
+                    <button class="btn bg-btn"><i class="fa-solid fa-plus me-1"></i> Add Role</button>
+                </a>
+            </div>
+        </div>
+        <div class="form-content">
+            <div class="row mt-1 w-100 ms-0">
+                <div class="col-12 text-end mb-3">
+                    <input type="text" class="form-control w-25 d-inline-block" placeholder="Search Roles..." [(ngModel)]="searchTerm">
+                </div>
+                <!-- <div *ngIf="!isFormSearchInProgress"> -->
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 50px;">Sl No</th>
+                                <th style="width: 200px;">Designation/User Role </th>
+                                <th style="width: 100px;">Status</th>
+                                <th style="width: 100px;">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let role of filteredRoles() | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" class="text-center">
+                                <td>{{ i + 1 + (page - 1) * 10 }}</td>
+                                <td>{{ role.name}}</td>
+                                <td [ngClass]="{'text-success': role.status == '1', 'text-danger': role.status != '1'}">
+                                    {{ role.status == '1' ? 'Active' : 'Inactive' }}
+                                </td>
+                                <td class="text-center">
+                                    <a routerLink="/superadmin/portal/user-role/permission/{{ role.id }}" class="btn btn-sm btn-dark"><i class="fa-solid fa-shield-halved"></i></a>
+                                </td>
+                            </tr>
+                            <tr *ngIf="filteredRoles().length === 0">
+                                <td colspan="6" class="text-center">No data available</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <pagination-controls (pageChange)="page = $event"></pagination-controls>
+                <!-- </div> -->
+                <!-- <div *ngIf="isFormSearchInProgress" class="text-center text-muted">
+                    Loading.. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                </div> -->
+            </div>
+        </div>
+       
+    </div>
+</section>

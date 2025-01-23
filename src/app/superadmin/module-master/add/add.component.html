@@ -1,0 +1,49 @@
+<section id="superadmin-manage-users-add-component" class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex align-items-center">
+            <h1 class="page-title mb-0">Add Module</h1>
+        </div>
+        <div class="col-6 col-md-6 text-end">
+            <a routerLink="/superadmin/portal/module-master">
+              <button class="btn cancel-btn"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+            </a>
+        </div>
+      </div>
+      <div class="">
+        <div class="row">
+          <div class="col-sm-6 col-md-12">
+            <form [formGroup]="userManageForm" (submit)="dataUserSubmit()">
+                <div class="form-content mb-3 pb-2">
+                  <div class="row">
+                      <div class="col-12 col-md- sub-title">
+                          <!-- <h5 class="sub-title">User Credentials</h5> -->
+                          <hr>
+                      </div>
+                  </div>
+                <div class="row mb-3">
+                    <div class="col-sm-6 col-md-4 mb-2">
+                        <label class="form-label" for="username">Module Name <span class="text-danger">*</span></label>
+                        <input type="text" formControlName="username" id="username" class="form-control" autocomplete="new-username">
+                        <app-form-error [field]="userManageForm.controls.username"></app-form-error>
+                    </div>
+                  </div>
+                </div>
+                 
+                <div class="row mb-3">
+                  <div class="col-sm-6 col-md-6">
+                    @if (!isFormSubmitInProgress) {
+                      <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Submit</button>
+                    } @else {
+                      <button type="button" disabled class="btn bg-btn">
+                        Submitting .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                      </button>
+                    }
+                  </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>

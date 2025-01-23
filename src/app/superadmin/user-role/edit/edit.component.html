@@ -1,0 +1,49 @@
+<section id="superadmin-user-role-edit-component" class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-6 d-flex align-items-center">
+          <h1 class="page-title mb-0">Edit User Role</h1>
+      </div>
+      <div class="col-6 col-md-6 text-end">
+          <a routerLink="/superadmin/portal/user-role">
+              <button class="btn cancel-btn"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+          </a>
+      </div>
+    </div>
+    <div class="form-content">
+      <div class="row">
+        <div class="col-sm-6 col-md-12">
+          <form [formGroup]="userRoleFormEdit" (submit)="roleEditSubmit()">
+            <div class="row mb-3">
+              <div class="col-sm-6 col-md-6">
+                <label class="form-label" for="role_name">Role Name</label>
+                <input type="text" id="role_name" formControlName="role_name" class="form-control">
+                  <app-form-error [field]="userRoleFormEdit.controls.role_name"></app-form-error>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <label class="form-label" for="role_status">Status</label>
+                <select formControlName="role_status" id="role_status" class="form-control form-select" value="{{role_details.status}}">
+                  <option value="">Select</option>
+                  <option value="1">Active</option>
+                  <option value="2">Inactive</option>
+                </select>
+                <app-form-error [field]="userRoleFormEdit.controls.role_status"></app-form-error>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-6 col-md-6">
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Update</button>
+                } @else {
+                  <button type="button" disabled class="btn bg-btn">
+                    Updating .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

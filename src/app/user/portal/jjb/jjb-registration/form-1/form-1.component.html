@@ -1,0 +1,695 @@
+<section id="jjb-registration-form-1-component">
+  <form [formGroup]="form1" (submit)="saveAsDraft()">
+      <div class="container">
+        <div class="card position-relative bg-white">
+          <div class="card-body">
+            <!-- Stepper Content -->
+            <div class="stepper d-flex justify-content-center mt-3">
+              <div class="step active">
+                <div class="circle">1</div>
+                <div class="label">Step 1</div>
+              </div>
+              <div class="line"></div>
+              <div class="step ">
+                <div class="circle">2</div>
+                <div class="label">Step 2</div>
+              </div>
+              <div class="line"></div>
+              <div class="step ">
+                <div class="circle">3</div>
+                <div class="label">Step 3</div>
+              </div>
+              <div class="line"></div>
+              <div class="step ">
+                <div class="circle ">4</div>
+                <div class="label ">Step 4</div>
+              </div>
+              <div class="line"></div>
+              <div class="step ">
+                <div class="circle">5</div>
+                <div class="label">Step 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+            <div class="text-center">
+              <!-- <div class="wrapper-header">ମୋ ଶିଶୁ</div>
+              <div class="wrapper-sub-child-header">
+                <span> An Initiative by Government of Odisha</span>
+                <div>Under Integrated Child Development Services Scheme</div>
+              </div> -->
+              <div class="next-child-header">
+                <div class="commom-style">Form-1</div>
+                <div>[Rules 8(1), 8(5)]</div>
+                <div class="commom-style">Social Background Report</div>
+              </div>
+            </div>
+
+             <!--Displaying Form Error Messages-->
+             <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+              <strong>Errors in Step 1:</strong>
+              <ul>
+                <li *ngFor="let error of displayErrors">{{ error }}</li>
+              </ul>
+            </div>
+  
+            <!-- Details of producing the child before the committee -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">A : Case Details</div>
+              <hr class="horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="firNo" class="form-label header-label">FIR/DD No </label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="firNo" formControlName="fir_ddno" aria-label="Enter FIR Number" placeholder="Enter FIR Number"/>
+                    <app-form-error [field]="form1.controls.fir_ddno"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="usections" class="form-label header-label">U/Sections</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="usections" formControlName="u_sections" aria-label="Enter U/Sections" placeholder="Enter U/Sections"/>
+                    <app-form-error [field]="form1.controls.u_sections"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="policeStation" class="form-label header-label">Police Station</label><span class="text-danger">*</span>
+                    <select class="form-select" id="police_station"
+                        formControlName="police_station" aria-label="Select Police Station">
+                        <option value="">Select Police Station</option>
+                        <option value="1">Bhubaneswar Police Station</option>
+                        <option value="2">Cuttack Police Station</option>
+                        <option value="3">Puri Police Station</option>
+                        <option value="4">Berhampur Police Station</option>
+                        <option value="5">Rourkela Police Station</option>
+                        <option value="6">Sambalpur Police Station</option>
+                        <option value="7">Balasore Police Station</option>
+                        <option value="8">Khurda Police Station</option>
+                        <option value="9">Balangir Police Station</option>
+                        <option value="10">Koraput Police Station</option>
+                    </select>
+                    <!-- <input type="text" class="form-control" id="policeStation" formControlName="police_station" aria-label="Enter Name of the Police Station" placeholder="Enter Name of Police Station"/> -->
+                    <app-form-error [field]="form1.controls.police_station"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfOfficer" class="form-label header-label">Name Of Investigation Officer</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="nameOfOfficer" formControlName="name_of_investigation_officer" aria-label="Enter Name of the Investigation Officer" placeholder="Enter Name of Investigation Officer"/>
+                    <app-form-error [field]="form1.controls.name_of_investigation_officer"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfcwpo" class="form-label header-label">Name Of CWPO</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="nameOfcwpo" formControlName="cwpo_name" aria-label="Enter Name of CWPO" placeholder="Enter Name of CWPO"/>
+                    <app-form-error [field]="form1.controls.cwpo_name"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="dateOf" class="form-label header-label">Date</label><span class="text-danger">*</span>
+                    <input type="date" class="form-control" id="dateOf" formControlName="date" aria-label="Enter Date"/>
+                    <app-form-error [field]="form1.controls.date"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="timeOf" class="form-label header-label">Time</label><span class="text-danger">*</span>
+                    <input type="time" class="form-control" id="timeOf" formControlName="time" aria-label="Enter Time"/>
+                    <app-form-error [field]="form1.controls.time"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="Jjb_id" class="form-label header-label"
+                      >Name of Juvenile Justice Board</label
+                    >
+                    <span class="text-danger">*</span>
+                    <select formControlName="Jjb_id"
+                      class="form-select"
+                      id="Jjb_id"
+                      aria-label="Select JJB"
+                    >
+                    <option value="" disabled>Select JJB</option>
+                    <option *ngFor="let jjb of jjb_list" [value]="jjb.id">{{ jjb.jjb_name }}</option>
+                    </select>
+                    <app-form-error [field]="form1.controls.Jjb_id"></app-form-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Details of Person who is producing the child -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">B : The child who is being produced</div>
+              <hr class="horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-2">
+                  <div class="form-group">
+                    <label for="cd_photo" class="form-label header-label">Photo</label>
+                    <a *ngIf="draft_details?.cd_photo" [href]="draft_details.cd_photo" target="_blank" class="ms-2">
+                      <i class="fa fa-download me-1"></i>
+                    </a>
+                    <input type="file" class="form-control" id="cd_photo" formControlName="cd_photo" aria-label="Upload Photo"/>
+                    <app-form-error [field]="form1.controls.cd_photo"></app-form-error>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <div class="row my-2">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">Child Name is Known <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="agreeYes" value="1" formControlName="child_name_known" (change)="form1.get('name')!.setValue('')" />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="agreeNo" value="0" formControlName="child_name_known" (change)="form1.get('name')!.setValue('Name Unknown')"/>
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                    <app-form-error [field]="form1.controls.child_name_known"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfthePerson" class="form-label header-label">Name</label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="nameOfthePerson" formControlName="name" aria-label="Enter Name" placeholder="Enter Name"  />
+                    <app-form-error [field]="form1.controls.name"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOftheGuardian" class="form-label header-label">Father/Mother/Guardian’s Name </label><span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="nameOftheGuardian" formControlName="guardian_name" aria-label="Enter Your Father/Mother/Guardian Name" placeholder="Enter Your Father/Mother/Guardian Name"/>
+                    <app-form-error [field]="form1.controls.guardian_name"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="dateOfBirth" class="form-label header-label">Date of Birth</label>
+                    <input type="date" class="form-control" id="dateOfBirth" formControlName="cd_dob" aria-label="Enter Date" (change)="onDobChange()" />
+                    <app-form-error [field]="form1.controls.cd_dob"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="proofOfDOB" class="form-label header-label">Proof of DOB</label>
+                    <select class="form-select" id="proofOfDOB" aria-label="Select Date Of Birth" formControlName="dob_proof">
+                      <option value="">Select DOB Proof</option>
+                      <option value="1">Birth Certificate</option>
+                      <option value="2">Aadhaar Card</option>
+                      <option value="3">Passport</option>
+                      <option value="4">10th Class Marksheet</option>
+                      <option value="5">PAN Card</option>
+                      <option value="6">Driving License</option>
+                      <option value="7">Voter ID</option>
+                      <option value="8">School Leaving Certificate</option>
+                      <option value="9">Baptism Certificate</option>
+                      <option value="10">Municipal Corporation Certificate</option>
+                    </select>
+                    <app-form-error [field]="form1.controls.dob_proof"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="age" class="form-label header-label">Age</label><span class="text-danger">*</span>
+                    <input type="number" class="form-control" id="age" formControlName="cd_age" aria-label="Enter Your age" placeholder="Enter Your age" (input)="onAgeChange($event)"/>
+                    <app-form-error [field]="form1.controls.cd_age"></app-form-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Present Address -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">Present Address</div>
+              <hr class="sub-horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="present_state" class="form-label header-label">State</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="present_state"
+                      aria-label="Select State"
+                      formControlName="present_state"
+                      (change)="onStateChange('present')"
+                    >
+                      <option value="">Select State</option>
+                      @for (state of states; track state.id) {
+                        <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      }
+                    </select>
+                    <app-form-error [field]="form1.controls.present_state"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="district" class="form-label header-label">District</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="district"
+                      aria-label="Select District"
+                      formControlName="present_district"
+                      (change)="onDistrictChange('present')"
+                    >
+                      <option selected disabled>Select District</option>
+                      <option value="">Select District</option>
+                      @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                      }
+                    </select>
+                    <app-form-error [field]="form1.controls.present_district"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="block" class="form-label header-label">Block/ULB</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="block"
+                      aria-label="Select Block"
+                      formControlName="present_block"
+                    >
+                      <option value="">Select Block</option>
+                      <option *ngFor="let block of blocks" [value]="block.id">
+                        {{ block.blockname }}
+                      </option>
+                    </select>
+                    <app-form-error [field]="form1.controls.present_block"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="policeStation" class="form-label header-label">Police Station</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="policeStation"
+                      aria-label="Select Police Station"
+                      formControlName="present_police_station"
+                    >
+                      <option value="">Select Police Station</option>
+                      <option value="1">Bhubaneswar Police Station</option>
+                      <option value="2">Cuttack Police Station</option>
+                      <option value="3">Puri Police Station</option>
+                      <option value="4">Berhampur Police Station</option>
+                      <option value="5">Rourkela Police Station</option>
+                      <option value="6">Sambalpur Police Station</option>
+                      <option value="7">Balasore Police Station</option>
+                      <option value="8">Khurda Police Station</option>
+                      <option value="9">Balangir Police Station</option>
+                      <option value="10">Koraput Police Station</option>
+                    </select>
+                    <app-form-error [field]="form1.controls.present_police_station"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOftheVillage" class="form-label header-label">Village/Ward</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nameOftheVillage"
+                      aria-label="Enter Name of the Village"
+                      placeholder="Enter Name of Village"
+                      formControlName="present_village"
+                    />
+                    <app-form-error [field]="form1.controls.present_village"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfthearea" class="form-label header-label">Area/Locality</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nameOfthearea"
+                      aria-label="Enter Name of the Area"
+                      placeholder="Enter Name of Area"
+                      formControlName="present_area"
+                    />
+                    <app-form-error [field]="form1.controls.present_area"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOftheStreet" class="form-label header-label">Street/Building</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nameOftheStreet"
+                      aria-label="Enter Name of the Street"
+                      placeholder="Enter Name of Street"
+                      formControlName="present_street"
+                    />
+                    <app-form-error [field]="form1.controls.present_street"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfthePostalCode" class="form-label header-label">Postal Code</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="postalcode"
+                      aria-label="Enter Postal code"
+                      placeholder="Enter Postal code"
+                      formControlName="present_pin_code"
+                      (input)="onAgeInput($event)"
+                    />
+                    <app-form-error [field]="form1.controls.present_pin_code"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-12">
+                  <div class="form-check mb-3">
+                    <input
+                      class="form-check-input custom-checkbox"
+                      type="checkbox"
+                      id="addressCheckbox"
+                      formControlName="addressCheckbox"
+                    />
+                    <label class="form-check-label" for="addressCheckbox">
+                      ( Please Check if Permanent Address is Different from Present Address)
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+             <!-- Permanent Address -->
+             <div class="sub-heading-wrapper mt-2"  *ngIf="form1.value.addressCheckbox">
+              <div class="sub-header mb-2">Permanent Address</div>
+              <hr class="sub-horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_state" class="form-label header-label">State</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="permanent_state"
+                      aria-label="Select State"
+                      formControlName="permanent_state"
+                      (change)="onStateChange('permanent')"
+                    >
+                      <option value="">Select State</option>
+                      @for (state of states; track state.id) {
+                        <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      }
+                    </select>
+                    <app-form-error [field]="form1.controls.permanent_state"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_district" class="form-label header-label">District</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="permanent_district"
+                      aria-label="Select District"
+                      formControlName="permanent_district"
+                      (change)="onDistrictChange('permanent')"
+                    >
+                      <option selected disabled>Select District</option>
+                      <option value="">Select District</option>
+                      @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                      }
+                    </select>
+                    <app-form-error [field]="form1.controls.permanent_district"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_block" class="form-label header-label">Block/ULB</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="permanent_block"
+                      aria-label="Select Block"
+                      formControlName="permanent_block"
+                    >
+                      <option value="">Select Block</option>
+                      <option *ngFor="let block of blocks" [value]="block.id">
+                        {{ block.blockname }}
+                      </option>
+                    </select>
+                    <app-form-error [field]="form1.controls.permanent_block"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_police_station" class="form-label header-label">Police Station</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="permanent_police_station"
+                      aria-label="Select Police Station"
+                      formControlName="permanent_police_station"
+                    >
+                      <option value="">Select Police Station</option>
+                      <option value="1">Bhubaneswar Police Station</option>
+                      <option value="2">Cuttack Police Station</option>
+                      <option value="3">Puri Police Station</option>
+                      <option value="4">Berhampur Police Station</option>
+                      <option value="5">Rourkela Police Station</option>
+                      <option value="6">Sambalpur Police Station</option>
+                      <option value="7">Balasore Police Station</option>
+                      <option value="8">Khurda Police Station</option>
+                      <option value="9">Balangir Police Station</option>
+                      <option value="10">Koraput Police Station</option>
+                    </select>
+                    <app-form-error [field]="form1.controls.permanent_police_station"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_village" class="form-label header-label">Village/Ward</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="permanent_village"
+                      aria-label="Enter Name of the Village"
+                      placeholder="Enter Name of Village"
+                      formControlName="permanent_village"
+                    />
+                    <app-form-error [field]="form1.controls.permanent_village"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_area" class="form-label header-label">Area/Locality</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="permanent_area"
+                      aria-label="Enter Name of the Area"
+                      placeholder="Enter Name of Area"
+                      formControlName="permanent_area"
+                    />
+                    <app-form-error [field]="form1.controls.permanent_area"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_street" class="form-label header-label">Street/Building</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="permanent_street"
+                      aria-label="Enter Name of the Street"
+                      placeholder="Enter Name of Street"
+                      formControlName="permanent_street"
+                    />
+                    <app-form-error [field]="form1.controls.permanent_street"></app-form-error>
+                  </div>
+                </div>
+            
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="permanent_pin_code" class="form-label header-label">Postal Code</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="permanent_pin_code"
+                      aria-label="Enter Postal code"
+                      placeholder="Enter Postal code"
+                      formControlName="permanent_pin_code"
+                      (input)="onAgeInput($event)"
+                    />
+                    <app-form-error [field]="form1.controls.permanent_street"></app-form-error>
+                  </div>
+                </div>
+            
+                <hr class="sub-horizontal-bar" />
+              </div>
+            </div>
+
+            <!-- Religion and Disability Type -->
+            <div class="row mt-2">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="religion" class="form-label header-label">Religion</label>
+                  <span class="text-danger">*</span>
+                  <select
+                    class="form-select"
+                    id="religion"
+                    aria-label="Select Religion"
+                    formControlName="religion"
+                  >
+                    <option value="">Select Religion</option>
+                    <option value="1">Hinduism</option>
+                    <option value="2">Muslim</option>
+                    <option value="3">Christian</option>
+                    <option value="4">Other</option>
+                  </select>
+                  <app-form-error [field]="form1.controls.religion"></app-form-error>
+                </div>
+              </div>
+            
+              <div class="col-md-4 mb-3" *ngIf="form1.get('religion')?.value === '4'">
+                <div class="form-group">
+                  <label for="specify" class="form-label header-label">Specify</label>
+                  <span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="specify"
+                    aria-label="Enter Specify"
+                    placeholder="Enter Specify"
+                    formControlName="religion_others"
+                  />
+                  <app-form-error [field]="form1.controls.religion_others"></app-form-error>
+                </div>
+              </div>
+            
+              <div class="col-md-12 mb-3">
+                <div class="form-group">
+                  <div class="row my-2">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">
+                        Whether the child is differently abled
+                      </label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="physically_handicapped"
+                          
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="physically_handicapped"
+                          (change)="form1.get('disability_type')?.reset(); form1.get('if_others')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                    <app-form-error [field]="form1.controls.physically_handicapped"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="form1.get('physically_handicapped')?.value === '1'">
+                <div class="col-md-4 mb-3" >
+                  <div class="form-group">
+                    <label for="disability_type" class="form-label header-label">Disability Type</label>
+                    <span class="text-danger">*</span>
+                    <select
+                      class="form-select"
+                      id="disability_type"
+                      aria-label="Select Disability"
+                      formControlName="disability_type"
+                    >
+                      <option value="" selected>Select Disability</option>
+                      <option value="1">Hearing Impairment</option>
+                      <option value="2">Speech_Impairment</option>
+                      <option value="3">Physically_disabled</option>
+                      <option value="4">Mentally_disabled</option>
+                      <option value="5">Other</option>
+                    </select>
+                    <app-form-error [field]="form1.controls.disability_type"></app-form-error>
+                  </div>
+                </div>
+              
+                <div class="col-md-4 mb-3" *ngIf="form1.get('disability_type')?.value === '5'">
+                  <div class="form-group">
+                    <label for="if_others" class="form-label header-label">Specify</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="if_others"
+                      aria-label="Enter Specify"
+                      placeholder="Enter Specify"
+                      formControlName="if_others"
+                    />
+                    <app-form-error [field]="form1.controls.if_others"></app-form-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Row container for buttons -->
+            <div class="row">
+              <div class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3">
+                <a routerLink="/portal/jjb/jjb-registration">
+                    <button type="button" class="btn cancel-button-style">Cancel</button>
+                </a>
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+                } @else {
+                  <button type="button" disabled class="btn save-next-btn-style">
+                    Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+</section>

@@ -1,0 +1,380 @@
+<section id="jjb-registration-form-4-component">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step ">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+              <div class="circle ">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form [formGroup]="form_4" (submit)="saveAsDraft()">
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+            <!--Displaying Form Error Messages-->
+            <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+              <strong>Errors in Step 4:</strong>
+              <ul>
+                <li *ngFor="let error of displayErrors">{{ error }}</li>
+              </ul>
+            </div>
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">M : Majority of the Friends Are</div>
+              <hr class="horizontal-bar" />
+              <div class="row my-2">
+                <div class="col-md-2">
+                  <label class="form-label bold-heading">Select</label>
+                </div>
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-4 mb-3" *ngFor="let friends of majority_of_friends">
+                      <div class="form-check d-flex gap-2">
+                        <input
+                            type="checkbox"
+                            class="form-check-input"
+                            [id]="friends.id"
+                            [value]="friends.value"
+                            (change)="onCheckboxChange($event)"
+                            [checked]="isChecked(friends.value)"
+                          />
+                          <label class="form-check-label" [for]="friends.id">{{ friends.label }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                N : Whether the Child has been Subjected to Any Form of Abuse
+              </div>
+              <hr class="horizontal-bar" />
+              <div id="form-container">
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">Verbal abuse <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="verbal_abuse"
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="verbal_abuse"
+                          (change)="form_4.get('verbal_abuse_by_whom')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="form_4.get('verbal_abuse')?.value === '1'">
+                  <div class="row my-2">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="verbal_abuse_by_whom" class="form-label header-label"
+                          >Specify By Whom
+                        </label>
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="verbal_abuse_by_whom"
+                          aria-label="Specify By Whom"
+                          placeholder="Specify By Whom"
+                          formControlName="verbal_abuse_by_whom"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading"
+                        >Physical abuse <span class="text-danger">*</span></label
+                      >
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="physical_abuse"
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="physical_abuse"
+                          (change)="form_4.get('physical_abuse_by_whom')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="form_4.get('physical_abuse')?.value === '1'">
+                  <div class="row my-2">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="physical_abuse_by_whom" class="form-label header-label"
+                          >Specify By Whom
+                        </label>
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="physical_abuse_by_whom"
+                          aria-label="Specify By Whom"
+                          placeholder="Specify By Whom"
+                          formControlName="physical_abuse_by_whom"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+  
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">Sexual abuse <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="sexual_abuse"
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="sexual_abuse"
+                          (change)="form_4.get('sexual_abuse_by_whom')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group" *ngIf="form_4.get('sexual_abuse')?.value === '1'">
+                  <div class="row my-2">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="sexual_abuse_by_whom" class="form-label header-label"
+                          >Specify By Whom
+                        </label>
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="sexual_abuse_by_whom"
+                          aria-label="Specify By Whom"
+                          placeholder="Specify By Whom"
+                          formControlName="sexual_abuse_by_whom"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row my-2">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="other_abuse_details" class="form-label header-label"
+                    >Other
+                  </label>
+                  <span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="other_abuse_details"
+                    aria-label="Enter Name of the Village"
+                    placeholder="Other"
+                    formControlName="other_abuse_details"
+                  />
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                O : Whether the Child is a Victim of Any Offence
+              </div>
+              <hr class="horizontal-bar" />
+              <div id="form-container">
+                <div class="form-group">
+                  <div class="row my-2">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">If Any</label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="victim_of_offence"
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="victim_of_offence"
+                          (change)="form_4.get('offence_details')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row" *ngIf="form_4.get('victim_of_offence')?.value === '1'">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="offence_details" class="form-label header-label"
+                        >Specify Details</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="offence_details"
+                        placeholder="Enter Specify Details"
+                        rows="3"
+                        formControlName="offence_details"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">P : Whether the Child is Used by Any Gangs or Adults or Group of Adults or has been Used for Drug Peddling</div>
+              <hr class="horizontal-bar" />
+              <div class="row mt-2">
+                <div class="form-group">
+                  <div class="row my-2">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">If Any</label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="involvement_in_gangs"
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="involvement_in_gangs"
+                          (change)="form_4.get('gang_involvement_details')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row" *ngIf="form_4.get('involvement_in_gangs')?.value === '1'">
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="gang_involvement_details" class="form-label header-label"
+                      >Specify Details</label
+                    >
+                    <span class="text-danger">*</span>
+                    <textarea
+                      class="form-control"
+                      id="gang_involvement_details"
+                      placeholder="Enter Provide Details"
+                      rows="3"
+                      formControlName="gang_involvement_details"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div
+              class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3"
+            >
+              <a routerLink="/portal/jjb/jjb-registration/form-3/{{draftId}}">
+                <button class="btn cancel-button-style">Back</button>
+              </a>
+              <!-- <a routerLink="/portal/jjb/jjb-registration/form-5/:draftId"> -->
+                <button class="btn save-next-btn-style">Save & Next</button>
+              <!-- </a> -->
+            </div>
+          </div>
+
+        </div>
+      </form>
+      </div>
+</section>

@@ -1,0 +1,535 @@
+<section id="user-registration-form-17-d">
+  <div class="container">
+    <div class="card position-relative bg-white">
+      <div class="card-body">
+        <!-- Stepper Content -->
+        <div class="stepper d-flex justify-content-center mt-3">
+          <div class="step ">
+            <div class="circle">1</div>
+            <div class="label">Step 1</div>
+          </div>
+          <div class="line"></div>
+          <div class="step ">
+            <div class="circle">2</div>
+            <div class="label">Step 2</div>
+          </div>
+          <div class="line"></div>
+          <div class="step active">
+            <div class="circle">3</div>
+            <div class="label">Step 3</div>
+          </div>
+          <div class="line"></div>
+          <div class="step">
+            <div class="circle">4</div>
+            <div class="label ">Step 4</div>
+          </div>
+          <div class="line"></div>
+          <div class="step">
+            <div class="circle">5</div>
+            <div class="label">Step 5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <div class="card mt-3 position-relative bg-white">
+        <div class="card-body">
+          <!--Displaying Form Error Messages-->
+          <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+            <strong>Errors in Step 3:</strong>
+            <ul>
+              <li *ngFor="let error of displayErrors">{{ error }}</li>
+            </ul>
+          </div>
+          <!-- Details of Parents/Guardians -->
+           <form [formGroup]="form17_d" (submit)="saveAsDraft()">
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">D : Details of Parents/Guardians</div>
+              <hr class="horizontal-bar" />
+              <div class="form-group">
+                <div class="row my-2">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">If Available</label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="if_guardians_available"
+                        value="1"
+                      />
+                      <label class="form-check-label">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="if_guardians_available"
+                        value="0"
+                      />
+                      <label class="form-check-label">No</label>
+                    </div>
+                    <app-form-error [field]="form17_d.controls.if_guardians_available"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="grd_photo" class="form-label header-label">Photo 
+                      @if(draft_details.grd_photo){
+                        <a href="{{ draft_details.grd_photo }}" target="_blank" class=" ms-2">
+                            <i class="fa fa-download me-1"></i>
+                        </a>
+                      }
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="grd_photo"
+                      formControlName="grd_photo"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_photo"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="name" class="form-label header-label">Name</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      formControlName="grd_name"
+                      placeholder="Enter Name"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_name"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="age" class="form-label header-label">Age</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      formControlName="grd_age"
+                      placeholder="Enter Your age"
+                      (input)="onAgeInput($event)"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_age"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="row">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Aadhar Availbility <span class="text-danger">*</span></label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="grd_aadhar_availabliity"
+                        value="1"
+                      />
+                      <label class="form-check-label">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        formControlName="grd_aadhar_availabliity"
+                        value="0"
+                        (change)="form17_d.get('grd_aadhar_number')?.reset(); form17_d.get('grd_aadhar_copy')?.reset()"
+                      />
+                      <label class="form-check-label">No</label>
+                    </div>
+                    <app-form-error [field]="form17_d.controls.grd_aadhar_availabliity"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="row my-3" *ngIf="form17_d.get('grd_aadhar_availabliity')?.value === '1'">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="AadharNumber" class="form-label header-label">Aadhar Number <span class="text-danger">*</span></label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="AadharNumber"
+                      formControlName="grd_aadhar_number"
+                      placeholder="Enter Your Aadhar Number"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_aadhar_number"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="uploadAadhar" class="form-label header-label">Upload copy of Aadhar
+                      @if(draft_details.grd_aadhar_copy){
+                        <a href="{{ draft_details.grd_aadhar_copy }}" target="_blank" class=" ms-2">
+                            <i class="fa fa-download me-1"></i>
+                        </a>
+                      }
+                    </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="grd_aadhar_copy"
+                      formControlName="grd_aadhar_copy"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_aadhar_copy"></app-form-error>
+                  </div>
+                </div>
+              </div>
+  
+              <!-- Present Address -->
+              <div class="sub-heading-wrapper mt-1">
+                <div class="sub-header mb-2">Present Address</div>
+                <hr class="sub-horizontal-bar" />
+                <div class="row mt-2">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="grd_pr_state" class="form-label header-label">State</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="grd_pr_state"
+                        formControlName="grd_pr_state"
+                        (change)="onStateChange('present')"
+                      >
+                      <option selected disabled>Select State</option>
+                      <option value="">Select State</option>
+                      @for (state of states; track state.id) {
+                      <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      }
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pr_state"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="district" class="form-label header-label">District</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="district"
+                        formControlName="grd_pr_district"
+                        (change)="onDistrictChange('present')"
+                      >
+                      <option selected disabled>Select District</option>
+                      <option value="">Select District</option>
+                        @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                        }
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pr_district"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="block" class="form-label header-label">Block/ULB</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="block"
+                        formControlName="grd_pr_block"
+                      >
+                      <option selected disabled>Select Block</option>
+                      <option value="">Select Block</option>
+                      @for (block of blocks; track block.id) {
+                        <option value="{{ block.id }}">{{ block.blockname }}</option>
+                        }
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pr_block"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="policeStation" class="form-label header-label">Police Station</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="policeStation"
+                        formControlName="grd_pr_police_station"
+                      >
+                        <option selected disabled>Select Police Station</option>
+                        <option value="">Select Police Station</option>
+                        <option value="1">Police Station one</option>
+                        <option value="2">Police Station Two</option>
+                        <option value="3">Police Station Three</option>
+                        <option value="4">Police Station Four</option>
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pr_police_station"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="nameOftheVillage" class="form-label header-label">Village/Ward</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nameOftheVillage"
+                        formControlName="grd_pr_village"
+                        placeholder="Enter Name of Village"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pr_village"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="nameOfthearea" class="form-label header-label">Area/Locality</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nameOfthearea"
+                        formControlName="grd_pr_area"
+                        placeholder="Enter Name of Area"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pr_area"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="nameOftheStreet" class="form-label header-label">Street/Building</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="nameOftheStreet"
+                        formControlName="grd_pr_street"
+                        placeholder="Enter Name of Street"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pr_street"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="nameOfthePostalCode" class="form-label header-label">Postal Code</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="postalcode"
+                        formControlName="grd_pr_pin"
+                        placeholder="Enter Postal code"
+                        (input)="onAgeInput($event)"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pr_pin"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-12">
+                    <div class="form-check mb-3">
+                      <input
+                        class="form-check-input custom-checkbox"
+                        type="checkbox"
+                        id="customCheckbox"
+                        formControlName="isPermanentAddressSame"
+                      />
+                      <label class="form-check-label" for="customCheckbox">
+                        (Please (check) If Permanent Address is Different From Present Address)
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            <!-- Permanent Address -->
+            @if (form17_d.value.isPermanentAddressSame) {
+              <div  class="sub-heading-wrapper mt-1" >
+                <div class="sub-header mb-2">Permanent Address</div>
+                <hr class="sub-horizontal-bar" />
+                <div class="row mt-2">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="grd_pm_state" class="form-label header-label">State</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="grd_pm_state"
+                        formControlName="grd_pm_state"
+                        (change)="onStateChange('permanent')"
+                      >
+                      <option selected disabled>Select State</option>
+                      <option value="">Select State</option>
+                      @for (state of states; track state.id) {
+                      <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      }
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pm_state"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_district" class="form-label header-label">District</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="pm_district"
+                        formControlName="grd_pm_dist"
+                        (change)="onDistrictChange('permanent')"
+                      >
+                      <option selected disabled>Select District</option>
+                      <option value="">Select District</option>
+                        @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                        }
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pm_dist"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_block" class="form-label header-label">Block/ULB</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="pm_block"
+                        formControlName="grd_pm_block"
+                      >
+                      <option selected disabled>Select Block</option>
+                      <option value="">Select Block</option>
+                      @for (block of blocks; track block.id) {
+                        <option value="{{ block.id }}">{{ block.blockname }}</option>
+                        }
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pm_block"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_policeStation" class="form-label header-label">Police Station</label>
+                      <span class="text-danger">*</span>
+                      <select
+                        class="form-select"
+                        id="pm_policeStation"
+                        formControlName="grd_pm_police_station"
+                      >
+                        <option selected disabled>Select Police Station</option>
+                        <option value="">Select Police Station</option>
+                        <option value="1">Police Station one</option>
+                        <option value="2">Police Station Two</option>
+                        <option value="3">Police Station Three</option>
+                        <option value="4">Police Station Four</option>
+                      </select>
+                      <app-form-error [field]="form17_d.controls.grd_pm_police_station"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_village" class="form-label header-label">Village/Ward</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="pm_village"
+                        formControlName="grd_pm_village"
+                        placeholder="Enter Name of Village"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pm_village"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_area" class="form-label header-label">Area/Locality</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="pm_area"
+                        formControlName="grd_pm_area"
+                        placeholder="Enter Name of Area"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pm_area"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_street" class="form-label header-label">Street/Building</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="pm_street"
+                        formControlName="grd_pm_street"
+                        placeholder="Enter Name of Street"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pm_street"></app-form-error>
+                    </div>
+                  </div>
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pm_pin" class="form-label header-label">Postal Code</label>
+                      <span class="text-danger">*</span>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="pm_pin"
+                        formControlName="grd_pm_pin"
+                        placeholder="Enter Postal code"
+                        (input)="onAgeInput($event)"
+                      />
+                      <app-form-error [field]="form17_d.controls.grd_pm_pin"></app-form-error>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            }
+        
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOftheDesignation" class="form-label header-label">Occupation/Designation</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="nameOftheDesignation"
+                      formControlName="grd_occupation"
+                      placeholder="Enter Name of Designation"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_occupation"></app-form-error>
+                  </div>
+                </div>
+
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfthePhoneNumber" class="form-label header-label">Contact Number</label>
+                    <span class="text-danger">*</span>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="contactNumber"
+                      formControlName="grd_mobile_number"
+                      placeholder="Enter Contact Number"
+                    />
+                    <app-form-error [field]="form17_d.controls.grd_mobile_number"></app-form-error>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="row">
+              <div class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3">
+                <a routerLink="/portal/registration/form-c/{{draftId}}">
+                  <button class="btn cancel-button-style">Back</button>
+                </a>                
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+                } @else {
+                  <button type="button" disabled class="btn save-next-btn-style">
+                    Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+            </div>
+           </form>
+        </div>
+      </div>
+    </div>
+</section>

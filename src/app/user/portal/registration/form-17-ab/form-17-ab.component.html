@@ -1,0 +1,727 @@
+<section id="user-form17-ab-component">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step active">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step">
+              <div class="circle">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+       
+
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+            <div class="text-center">
+              <!-- <div class="wrapper-header">ମୋ ଶିଶୁ</div>
+              <div class="wrapper-sub-child-header">
+                <span> An Initiative by Government of Odisha</span>
+                <div>Under Integrated Child Development Services Scheme</div>
+              </div> -->
+              <div class="next-child-header">
+                <div class="commom-style">Form-17</div>
+                <div>[Rules 18(2), 19(25)]</div>
+                <div class="commom-style" style="text-transform: uppercase">
+                  Report To Be Submitted AT Time Of Production of child before the
+                  committee
+                </div>
+              </div>
+            </div>
+            <!--Displaying Form Error Messages-->
+            <div *ngIf="displayErrors.length > 0" class="error-box mt-3">
+              <strong>Errors in Step 1:</strong>
+              <ul>
+                <li *ngFor="let error of displayErrors">{{ error }}</li>
+              </ul>
+            </div>
+            
+          <!-- Details of producing the child before the committee -->
+            <form [formGroup]="form17_ab" (submit)="saveAsDraft()">
+            <div class="sub-heading-wrapper mt-5">
+              <div class="sub-header mb-2">
+                A : Details of Producing the Child Before the Committee
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="case_no" class="form-label header-label">Case No</label
+                    ><span class="text-danger">*</span>
+                    <input
+                    formControlName="case_no"
+                      type="text"
+                      class="form-control"
+                      id="case_no"
+                      aria-label="Enter Case Number"
+                      placeholder="Enter Case Number"
+                    />
+                    <app-form-error [field]="form17_ab.controls.case_no"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="childWelfareCommittee" class="form-label header-label"
+                      >Name of Child Welfare Committee</label
+                    >
+                    <span class="text-danger">*</span>
+                    <select formControlName="childWelfareCommittee"
+                      class="form-select"
+                      id="childWelfareCommittee"
+                      aria-label="Select CWC"
+                    >
+                    <option value="" disabled>Select CWC</option>
+                    <option *ngFor="let cwc of cwc_lists" [value]="cwc.id">{{ cwc.cwc_name }}</option>
+                    </select>
+                    <!-- <input
+                    formControlName="childWelfareCommittee"
+                      type="text"
+                      class="form-control"
+                      id="childWelfareCommittee"
+                      aria-label="Enter CWC Name"
+                      placeholder="Enter CWC Name"
+                    /> -->
+                    <app-form-error [field]="form17_ab.controls.childWelfareCommittee"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="dateOfProduction" class="form-label header-label"
+                      >Date of Production</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input
+                      formControlName="dateOfProduction"
+                      type="date"
+                      class="form-control"
+                      id="dateOfProduction"
+                      aria-label="Enter Date of Production"
+                      
+                    />
+                    <app-form-error [field]="form17_ab.controls.dateOfProduction"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="timeOfProduction" class="form-label header-label"
+                      >Time of Production</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input
+                    formControlName="timeOfProduction"
+                      type="time"
+                      class="form-control"
+                      id="timeOfProduction"
+                      aria-label="Enter Time of Production"
+                      
+                    />
+                    <app-form-error [field]="form17_ab.controls.timeOfProduction"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="placeProduction" class="form-label header-label"
+                      >Place of Production</label
+                    ><span class="text-danger">*</span>
+                    <input
+                      formControlName="placeProduction"
+                      type="text"
+                      class="form-control"
+                      id="placeProduction"
+                      aria-label="Enter Place of Production"
+                      placeholder="Enter Place of Production"
+                      
+                    />
+                    <app-form-error [field]="form17_ab.controls.placeProduction"></app-form-error>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Details of Person who is producing the child -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                B : Details of Person Who is Producing the Child
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="photo" class="form-label header-label">Photo <span class="text-danger">*</span>
+                      @if(draft_details.photo){
+                        <a href="{{ draft_details.photo }}" target="_blank" class=" ms-2">
+                            <i class="fa fa-download me-1"></i>
+                        </a>
+                      }
+                    </label>
+                    <input
+                      formControlName="photo"
+                      type="file"
+                      class="form-control"
+                      id="photo"
+                      aria-label="Upload Photo"
+                    />
+                    <app-form-error [field]="form17_ab.controls.photo"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfthePerson" class="form-label header-label"
+                      >Name of the Person</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input
+                      formControlName="nameOfthePerson"
+                      type="text"
+                      class="form-control"
+                      id="nameOfthePerson"
+                      aria-label="Enter Name of the Person"
+                      placeholder="Enter Name of Perosn"
+                      
+                    />
+                    <app-form-error [field]="form17_ab.controls.nameOfthePerson"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="age" class="form-label header-label">Age</label
+                    ><span class="text-danger">*</span>
+                    <input
+                      formControlName="age"
+                      type="number"
+                      class="form-control"
+                      id="age"
+                      aria-label="Enter Your age"
+                      placeholder="Enter Your age"
+                      (input)="onAgeInput($event)"
+                    />
+                    <app-form-error [field]="form17_ab.controls.age"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label class="form-label header-label">Gender</label>
+                    <span class="text-danger">*</span>
+                    <div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          formControlName="gender"
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          id="genderMale"
+                          value="0"
+                          
+                        />
+                        <label class="form-check-label" for="genderMale"
+                          >Male</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          formControlName="gender"
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          id="genderFemale"
+                          value="1"
+                          
+                        />
+                        <label class="form-check-label" for="genderFemale"
+                          >Female</label
+                        >
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          formControlName="gender"
+                          class="form-check-input"
+                          type="radio"
+                          name="gender"
+                          id="genderOther"
+                          value="2"
+                          
+                        />
+                        <label class="form-check-label" for="genderOther"
+                          >Other</label
+                        >
+                      </div>
+                    </div>
+                    <app-form-error [field]="form17_ab.controls.gender"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="AadharNumber" class="form-label header-label"
+                      >Aadhar Number</label
+                    ><span class="text-danger">*</span>
+                    <input formControlName="AadharNumber"
+                      type="number"
+                      class="form-control"
+                      id="AadharNumber"
+                      aria-label="Enter Your Aadhar Number"
+                      placeholder="Enter Your Aadhar Number"
+                      
+                    />
+                    <app-form-error [field]="form17_ab.controls.AadharNumber"></app-form-error>
+
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="uploadAadhar" class="form-label header-label">Upload copy of Aadhar
+                      @if(draft_details.aadhar_copy){
+                        <a href="{{ draft_details.aadhar_copy }}" target="_blank" class=" ms-2">
+                            <i class="fa fa-download me-1"></i>
+                        </a>
+                      }
+                      </label>
+                    
+                    <input formControlName="uploadAadhar"
+                      type="file"
+                      class="form-control"
+                      id="uploadAadhar"
+                      aria-label="Upload uploadAadhar"
+                      
+                    />
+                    <app-form-error [field]="form17_ab.controls.uploadAadhar"></app-form-error>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Present Address -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">Present Address</div>
+              <hr class="sub-horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="state_id" class="form-label header-label">State</label>
+                    <span class="text-danger">*</span>
+                    <select formControlName="state_id"
+                      class="form-select"
+                      id="state_id"
+                      aria-label="Select State"
+                      (change)="onStateChange('present')"
+                    >
+                      <option selected disabled>Select State</option>
+                      <option value="">Select State</option>
+                      @for (state of states; track state.id) {
+                      <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      }
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.state_id"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="district_id" class="form-label header-label">District</label>
+                    <span class="text-danger">*</span>
+                    <select formControlName="district_id"
+                      class="form-select"
+                      id="district_id"
+                      aria-label="Select District"
+                      
+                      (change)="onDistrictChange('present')"
+                    >
+                      <option selected disabled>Select District</option>
+                      <option value="">Select District</option>
+                        @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                        }
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.district_id"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="block_id" class="form-label header-label">Block/ULB</label>
+                    <span class="text-danger">*</span>
+                    <select formControlName="block_id" class="form-select" id="block_id" aria-label="Select Block">
+                      <option value="" disabled>Select Block</option>
+                      <option *ngFor="let block of blocks" [value]="block.id">{{ block.blockname }}</option>
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.block_id"></app-form-error>
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="policeStation" class="form-label header-label"
+                      >Police Station</label
+                    >
+                    <span class="text-danger">*</span>
+                    <select formControlName="policeStation"
+                      class="form-select"
+                      id="policeStation"
+                      aria-label="Select Police Station"
+                      
+                    >
+                      <option value="">Select Police Station</option>
+                      <option value="1">
+                        Police Station one
+                      </option>
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.policeStation"></app-form-error>
+
+                    
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOftheVillage" class="form-label header-label"
+                      >Village/Ward</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="nameOftheVillage"
+                      type="text"
+                      class="form-control"
+                      id="nameOftheVillage"
+                      aria-label="Enter Name of the Village"
+                      placeholder="Enter Name of Village"
+                    />
+                    <app-form-error [field]="form17_ab.controls.nameOftheVillage"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOfthearea" class="form-label header-label"
+                      >Area/Locality</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="nameOfthearea"
+                      type="text"
+                      class="form-control"
+                      id="nameOfthearea"
+                      aria-label="Enter Name of the Area"
+                      placeholder="Enter Name of Area"
+                    />
+                    <app-form-error [field]="form17_ab.controls.nameOfthearea"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="nameOftheStreet" class="form-label header-label"
+                      >Street/Building</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="nameOftheStreet"
+                      type="text"
+                      class="form-control"
+                      id="nameOftheStreet"
+                      aria-label="Enter Name of the Street"
+                      placeholder="Enter Name of Street"
+                    />
+                    <app-form-error [field]="form17_ab.controls.nameOftheStreet"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="postalcode" class="form-label header-label"
+                      >Postal Code</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="postalcode"
+                      type="number"
+                      class="form-control"
+                      id="postalcode"
+                      aria-label="Enter Postal code"
+                      placeholder="Enter Postal code"
+                      (input)="onAgeInput($event)"
+                    />
+                    <app-form-error [field]="form17_ab.controls.postalcode"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-12">
+                  <div class="form-check mb-3">
+                    <input formControlName="addressCheckbox"
+                      class="form-check-input custom-checkbox"
+                      type="checkbox"
+                      id="addressCheckbox"
+
+                    />
+                    <label class="form-check-label" for="addressCheckbox">
+                      (Please (Check) if permanent address is different from present address)
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Permanent Address -->
+
+            <div class="sub-heading-wrapper mt-2" *ngIf="form17_ab.value.addressCheckbox">
+              <div class="sub-header mb-2">Permanent Address</div>
+              <hr class="sub-horizontal-bar" />
+              <div class="row mt-2">
+
+                
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_state_id" class="form-label header-label">State</label>
+                    <span class="text-danger">*</span>
+                    <select formControlName="pm_state_id"
+                      class="form-select"
+                      id="pm_state_id"
+                      aria-label="Select State"
+                      (change)="onStateChange('permanent')"
+                    >
+                      <option selected disabled>Select State</option>
+                      <option value="">Select State</option>
+                      @for (state of states; track state.id) {
+                      <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      }
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.pm_state_id"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_district_id" class="form-label header-label">District</label>
+                    <span class="text-danger">*</span>
+                    <select formControlName="pm_district_id"
+                      class="form-select"
+                      id="pm_district_id"
+                      aria-label="Select District"
+                      (change)="onDistrictChange('permanent')"
+                    >
+                      <option selected disabled>Select District</option>
+                      <option value="">Select District</option>
+                        @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                        }
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.pm_district_id"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_block_id" class="form-label header-label">Block/ULB</label>
+                    <span class="text-danger">*</span>
+                    <select formControlName="pm_block_id"
+                            class="form-select"
+                            id="pm_block_id"
+                            aria-label="Select Block">
+                      <option  value="">Select Block</option>
+                      <option *ngFor="let block of blocks" [value]="block.id">
+                        {{ block.blockname }}
+                      </option>
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.pm_block_id"></app-form-error>
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_policeStation" class="form-label header-label"
+                      >Police Station</label
+                    >
+                    <span class="text-danger">*</span>
+                    <select formControlName="pm_policeStation"
+                      class="form-select"
+                      id="pm_policeStation"
+                      aria-label="Select Police Station"
+                    >
+                      <option value="">Select Police Station</option>
+                      <option value="1">
+                        Police Station one
+                      </option>
+                    </select>
+                    <app-form-error [field]="form17_ab.controls.pm_policeStation"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_nameOftheVillage" class="form-label header-label"
+                      >Village/Ward</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="pm_nameOftheVillage"
+                      type="text"
+                      class="form-control"
+                      id="pm_nameOftheVillage"
+                      aria-label="Enter Name of the Village"
+                      placeholder="Enter Name of Village"
+                    />
+                    <app-form-error [field]="form17_ab.controls.pm_nameOftheVillage"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_nameOfthearea" class="form-label header-label"
+                      >Area/Locality</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="pm_nameOfthearea"
+                      type="text"
+                      class="form-control"
+                      id="pm_nameOfthearea"
+                      aria-label="Enter Name of the Area"
+                      placeholder="Enter Name of Area"
+                    />
+                    <app-form-error [field]="form17_ab.controls.pm_nameOfthearea"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_nameOftheStreet" class="form-label header-label"
+                      >Street/Building</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="pm_nameOftheStreet"
+                      type="text"
+                      class="form-control"
+                      id="pm_nameOftheStreet"
+                      aria-label="Enter Name of the Street"
+                      placeholder="Enter Name of Street"
+                    />
+                    <app-form-error [field]="form17_ab.controls.pm_nameOftheStreet"></app-form-error>
+
+                  </div>
+                </div>
+  
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pm_PostalCode" class="form-label header-label"
+                      >Postal Code</label
+                    >
+                    <span class="text-danger">*</span>
+                    <input formControlName="pm_PostalCode"
+                      type="number"
+                      class="form-control"
+                      id="pm_PostalCode"
+                      aria-label="Enter Postal code"
+                      placeholder="Enter Postal code"
+                      (input)="onAgeInput($event)"
+                    />
+                    <app-form-error [field]="form17_ab.controls.pm_PostalCode"></app-form-error>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Occupation / esignation -->
+            <div class="row mt-2">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="nameOftheDesignation" class="form-label header-label"
+                    >Occupation/Designation</label
+                  >
+                  <span class="text-danger">*</span>
+                  <input formControlName="nameOftheDesignation"
+                    type="text"
+                    class="form-control"
+                    id="nameOftheDesignation"
+                    aria-label="Enter Name of the Designation"
+                    placeholder="Enter Name of Designation"
+                  />
+                  <app-form-error [field]="form17_ab.controls.nameOftheDesignation"></app-form-error>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="nameOftheDesignation" class="form-label header-label"
+                    >Name of the Organisation/CCI/SAA</label
+                  >
+                  <span class="text-danger">*</span>
+                  <input formControlName="organisation"
+                    type="text"
+                    class="form-control"
+                    id="organisation"
+                    aria-label="Enter Name of the Organisation/CCI/SAA"
+                    placeholder="Enter Name of Organisation/CCI/SAA"
+                  />
+                  <app-form-error [field]="form17_ab.controls.organisation"></app-form-error>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="nameOfthePhoneNumber" class="form-label header-label"
+                    >Contact Number</label
+                  >
+                  <span class="text-danger">*</span>
+                  <input formControlName="contactNumber"
+                    type="number"
+                    class="form-control"
+                    id="contactNumber"
+                    aria-label="Enter Contact Number"
+                    placeholder="Enter Contact Number"
+                  />
+                  <app-form-error [field]="form17_ab.controls.contactNumber"></app-form-error>
+                </div>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3">
+                <a routerLink="/portal/registration">
+                  <button class="btn cancel-button-style">Cancel</button>
+                </a>
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+                } @else {
+                  <button type="button" disabled class="btn save-next-btn-style">
+                    Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+            </div>
+
+            </form>
+          </div>
+        </div>
+      </div>
+</section>

@@ -1,0 +1,758 @@
+<section id="user-registration-form-17-ef">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step ">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+              <div class="circle ">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+            <!--Displaying Form Error Messages-->
+            <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+              <strong>Errors in Step 4:</strong>
+              <ul>
+                <li *ngFor="let error of displayErrors">{{ error }}</li>
+              </ul>
+            </div>
+            <!-- Place where the child was found -->
+            <form [formGroup]="form17_ef" (submit)="saveAsDraft()">
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">E :  Place where the child was found</div>
+              <hr class="horizontal-bar" />
+  
+              <!-- Present Address -->
+              <div class="sub-heading-wrapper mt-1">
+                <div class="row mt-2">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_state" class="form-label header-label">State</label>
+                      <span class="text-danger">*</span>
+                      <select class="form-select" id="pwcf_state" formControlName="pwcf_state"
+                          aria-label="Select State" (change)="onStateChange('childfound')">
+                          <option selected disabled>Select State</option>
+                          <option value="">Select State</option>
+                          @for (state of states; track state.id) {
+                          <option value="{{ state.id }}">{{ state.state_name }}</option>
+                          }
+                      </select>
+                      <app-form-error [field]="form17_ef.controls.pwcf_state"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_district_id" class="form-label header-label">District</label>
+                      <span class="text-danger">*</span>
+                      <select class="form-select" id="pwcf_district_id"
+                          formControlName="pwcf_district_id" aria-label="Select District" (change)="onDistrictChange('childfound')">
+                          <option selected disabled>Select District</option>
+                          <option value="">Select District</option>
+                          @for (district of districts; track district.id) {
+                          <option value="{{ district.id }}">{{ district.district_name }}</option>
+                          }
+                      </select>
+                      <app-form-error [field]="form17_ef.controls.pwcf_district_id"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_block_id" class="form-label header-label">Block/ULB</label>
+                      <span class="text-danger">*</span>
+                      <select class="form-select" id="pwcf_block_id" formControlName="pwcf_block_id"
+                          aria-label="Select Block">
+                          <option selected disabled>Select Block</option>
+                          <option value="">Select Block</option>
+                          @for (block of blocks; track block.id) {
+                            <option value="{{ block.id }}">{{ block.blockname }}</option>
+                            }
+                      </select>
+                      <app-form-error [field]="form17_ef.controls.pwcf_block_id"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_police_station" class="form-label header-label">Police
+                        Station</label>
+                    <span class="text-danger">*</span>
+                    <select class="form-select" id="pwcf_police_station"
+                        formControlName="pwcf_police_station" aria-label="Select Police Station">
+                        <option selected disabled>Select Police Station</option>
+                        <option value="">Select Police Station</option>
+                        <option value="1">Police Station one</option>
+                        <option value="2">Police Station Two</option>
+                        <option value="3">Police Station Three</option>
+                        <option value="4">Police Station Four</option>
+                    </select>
+                    <app-form-error [field]="form17_ef.controls.pwcf_police_station"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_village" class="form-label header-label">Village/Ward</label>
+                      
+                      <input type="text" class="form-control" id="pwcf_village"
+                          formControlName="pwcf_village" aria-label="Enter Name of the Village"
+                          placeholder="Enter Name of Village" />
+                          <app-form-error [field]="form17_ef.controls.pwcf_village"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_area" class="form-label header-label">Area/Locality</label>
+                     
+                      <input type="text" class="form-control" id="pwcf_area"
+                          formControlName="pwcf_area" aria-label="Enter Name of the Area"
+                          placeholder="Enter Name of Area" />
+                          <app-form-error [field]="form17_ef.controls.pwcf_area"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_street" class="form-label header-label">Street/Building</label>
+                      
+                      <input type="text" class="form-control" id="pwcf_street"
+                          formControlName="pwcf_street" aria-label="Enter Name of the Street"
+                          placeholder="Enter Name of Street" />
+                          <app-form-error [field]="form17_ef.controls.pwcf_street"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="pwcf_pin" class="form-label header-label">Postal Code</label>
+                     
+                      <input type="number" class="form-control" id="pwcf_pin"
+                          formControlName="pwcf_pin" aria-label="Enter Postal code"
+                          placeholder="Enter Postal code" (input)="onAgeInput($event)" />
+                          <app-form-error [field]="form17_ef.controls.pwcf_pin"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="place_details" class="form-label header-label">Place Details</label>
+                      <textarea class="form-control" id="place_details"
+                          formControlName="place_details" placeholder="Enter Place Details"
+                          rows="3"></textarea>
+                          <app-form-error [field]="form17_ef.controls.place_details"></app-form-error>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                F : The details of the person with whom the child was found
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="form-group">
+                <div class="row my-2">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">If Available</label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="accompanying_person_details"
+                      id="accompanying_person_details_yes" formControlName="accompanying_person_details"
+                      value="1" />
+                      <label class="form-check-label" for="accompanying_person_details_yes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="accompanying_person_details"
+                      id="accompanying_person_details_no" formControlName="accompanying_person_details"
+                      value="0" />
+                      <label class="form-check-label" for="accompanying_person_details_no">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row mt-2">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pwcf_photo" class="form-label header-label">Photo
+                      @if(draft_details.pwcf_photo){
+                        <a href="{{ draft_details.pwcf_photo }}" target="_blank" class=" ms-2">
+                            <i class="fa fa-download me-1"></i>
+                        </a>
+                      }
+                    </label>
+                    <input type="file" class="form-control" id="pwcf_photo"
+                        formControlName="pwcf_photo" aria-label="Upload Photo" />
+                        <app-form-error [field]="form17_ef.controls.pwcf_photo"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pwcf_name" class="form-label header-label">Name</label>
+                    <span class="text-danger">*</span>
+                    <input type="text" class="form-control" id="pwcf_name"
+                        formControlName="pwcf_name" aria-label="Enter Name"
+                        placeholder="Enter Name" />
+                        <app-form-error [field]="form17_ef.controls.pwcf_name"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pwcf_age" class="form-label header-label">Age</label>
+                      <span class="text-danger">*</span>
+                      <input type="number" class="form-control" id="pwcf_age"
+                          formControlName="pwcf_age" aria-label="Enter Your age"
+                          placeholder="Enter Your age" (input)="onAgeInput($event)"/>
+                          <app-form-error [field]="form17_ef.controls.pwcf_age"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <div class="row">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Gender <span class="text-danger">*</span></label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="pwcf_gender"
+                      id="pwcf_sex_male" formControlName="pwcf_gender" value="0" />
+                      <label class="form-check-label" for="pwcf_sex_male">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="pwcf_gender"
+                          id="pwcf_sex_female" formControlName="pwcf_gender" value="1" />
+                      <label class="form-check-label" for="pwcf_sex_female">Female</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input class="form-check-input" type="radio" name="pwcf_gender"
+                          id="pwcf_sex_other" formControlName="pwcf_gender" value="2" />
+                      <label class="form-check-label" for="pwcf_sex_other">Other</label>
+                    </div>
+                    <app-form-error [field]="form17_ef.controls.pwcf_gender"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group mt-2">
+                <div class="row">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading"
+                      >Aadhar Availbility <span class="text-danger">*</span></label
+                    >
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="pwcf_aadhar_availabliity"
+                        id="agreeYes"
+                        value="1"
+                        formControlName="pwcf_aadhar_availabliity"
+                      />
+                      <label class="form-check-label" for="agreeYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        name="pwcf_aadhar_availabliity"
+                        id="agreeNo"
+                        value="0"
+                        formControlName="pwcf_aadhar_availabliity"
+                        (change)="form17_ef.get('pwcf_aadhar_number')?.reset(); form17_ef.get('pwcf_aadhar_copy')?.reset()"
+                      />
+                      <label class="form-check-label" for="agreeNo">No</label>
+                    </div>
+                    <app-form-error [field]="form17_ef.controls.pwcf_aadhar_availabliity"></app-form-error>
+                  </div>
+                </div>
+              </div>
+              <div class="row my-4"  *ngIf="form17_ef.get('pwcf_aadhar_availabliity')?.value === '1'">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pwcf_aadhar_number" class="form-label header-label"
+                      >Aadhar Number <span class="text-danger">*</span></label
+                    >
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="pwcf_aadhar_number"
+                      aria-label="Enter Your Aadhar Number"
+                      placeholder="Enter Your Aadhar Number"
+                      formControlName="pwcf_aadhar_number"
+                    />
+                    <app-form-error [field]="form17_ef.controls.pwcf_aadhar_number"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="pwcf_aadhar_copy" class="form-label header-label">Upload copy of Aadhar
+                      @if(draft_details.pwcf_aadhar_copy){
+                        <a href="{{ draft_details.pwcf_aadhar_copy }}" target="_blank" class=" ms-2">
+                            <i class="fa fa-download me-1"></i>
+                        </a>
+                      }
+                      </label>
+                    <input
+                      type="file"
+                      class="form-control"
+                      id="pwcf_aadhar_copy"
+                      aria-label="Upload uploadAadhar"
+                      formControlName="pwcf_aadhar_copy"
+                    />
+                    <app-form-error [field]="form17_ef.controls.pwcf_aadhar_copy"></app-form-error>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+               <!-- Present Address -->
+               <div class="sub-heading-wrapper my-4">
+                  <div class="sub-header mb-2">Present Address</div>
+                  <hr class="sub-horizontal-bar" />
+                  <div class="row mt-2">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="pwcf_pr_state" class="form-label header-label">State</label>
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="pwcf_pr_state"
+                          aria-label="Select State"
+                          formControlName="pwcf_pr_state"
+                          (change)="onStateChange('present')"
+                        >
+                          <option selected disabled>Select State</option>
+                          <option value="">Select State</option>
+                          @for (state of states; track state.id) {
+                          <option value="{{ state.id }}">{{ state.state_name }}</option>
+                          }
+                        </select>
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_state"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="pwcf_pr_district" class="form-label header-label">District</label>
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="pwcf_pr_district"
+                          aria-label="Select District"
+                          formControlName="pwcf_pr_district"
+                          (change)="onDistrictChange('present')"
+                        >
+                          <option selected disabled>Select District</option>
+                          <option value="">Select District</option>
+                          @for (district of districts; track district.id) {
+                          <option value="{{ district.id }}">{{ district.district_name }}</option>
+                          }
+                        </select>
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_district"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="pwcf_pr_block" class="form-label header-label">Block/ULB</label>
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="pwcf_pr_block"
+                          aria-label="Select Block"
+                          formControlName="pwcf_pr_block"
+                        >
+                          <option selected disabled>Select Block</option>
+                          <option value="">Select Block</option>
+                          @for (block of blocks; track block.id) {
+                            <option value="{{ block.id }}">{{ block.blockname }}</option>
+                            }
+                        </select>
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_block"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="pwcf_pr_police_station" class="form-label header-label"
+                          >Police Station</label
+                        >
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="pwcf_pr_police_station"
+                          aria-label="Select Police Station"
+                          formControlName="pwcf_pr_police_station"
+                        >
+                          <option selected disabled>Select Police Station</option>
+                          <option value="">Select Police Station</option>
+                          <option value="1">
+                            Police Station one
+                          </option>
+                          <option value="2">
+                            Police Station Two
+                          </option>
+                          <option value="3">
+                            Police Station Three
+                          </option>
+                          <option value="4">
+                            Police Station Four
+                          </option>
+                        </select>
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_police_station"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="pwcf_pr_village" class="form-label header-label"
+                          >Village/Ward</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pwcf_pr_village"
+                          aria-label="Enter Name of the Village"
+                          placeholder="Enter Name of Village"
+                          formControlName="pwcf_pr_village"
+                        />
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_village"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="pwcf_pr_area" class="form-label header-label"
+                          >Area/Locality</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pwcf_pr_area"
+                          aria-label="Enter Name of the Area"
+                          placeholder="Enter Name of Area"
+                          formControlName="pwcf_pr_area"
+                        />
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_area"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="nameOftheStreet" class="form-label header-label"
+                          >Street/Building</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="nameOftheStreet"
+                          aria-label="Enter Name of the Street"
+                          placeholder="Enter Name of Street"
+                          formControlName="pwcf_pr_street"
+                        />
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_street"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="nameOfthePostalCode" class="form-label header-label"
+                          >Postal Code</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="postalcode"
+                          aria-label="Enter Postal code"
+                          placeholder="Enter Postal code"
+                          formControlName="pwcf_pr_pin"
+                          (input)="onAgeInput($event)"
+                        />
+                        <app-form-error [field]="form17_ef.controls.pwcf_pr_pin"></app-form-error>
+                      </div>
+                    </div>
+    
+                    <div class="col-md-12">
+                      <div class="form-check mb-3">
+                        <input
+                          class="form-check-input custom-checkbox"
+                          type="checkbox"
+                          id="customCheckbox1"
+                          formControlName="isPermanentAddressSame"
+                        />
+                        <label class="form-check-label" for="customCheckbox1">
+                          (Please ( Check ) if Permanent Address is Different from Present Address)
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Permanent Address -->
+                @if (form17_ef.value.isPermanentAddressSame) {
+                  <div class="sub-heading-wrapper">
+                    <div class="sub-header mb-2">Permanent Address</div>
+                    <hr class="sub-horizontal-bar" />
+                    <div class="row mt-2">
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_state" class="form-label header-label">State</label>
+                          <span class="text-danger">*</span>
+                          <select
+                            class="form-select"
+                            id="pwcf_pm_state"
+                            aria-label="Select State"
+                            formControlName="pwcf_pm_state"
+                            (change)="onStateChange('permanent')"
+                          >
+                            <option selected disabled>Select State</option>
+                            <option value="">Select State</option>
+                            @for (state of states; track state.id) {
+                            <option value="{{ state.id }}">{{ state.state_name }}</option>
+                            }
+                          </select>
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_state"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_district" class="form-label header-label">District</label>
+                          <span class="text-danger">*</span>
+                          <select
+                            class="form-select"
+                            id="pwcf_pm_district"
+                            aria-label="Select District"
+                            formControlName="pwcf_pm_district"
+                            (change)="onDistrictChange('permanent')"
+                          >
+                            <option selected disabled>Select District</option>
+                            <option value="">Select District</option>
+                            @for (district of districts; track district.id) {
+                            <option value="{{ district.id }}">{{ district.district_name }}</option>
+                            }
+                          </select>
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_district"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_block" class="form-label header-label">Block/ULB</label>
+                          <span class="text-danger">*</span>
+                          <select
+                            class="form-select"
+                            id="pwcf_pm_block"
+                            aria-label="Select Block"
+                            formControlName="pwcf_pm_block"
+                          >
+                            <option selected disabled>Select Block</option>
+                            <option value="">Select Block</option>
+                            @for (block of blocks; track block.id) {
+                              <option value="{{ block.id }}">{{ block.blockname }}</option>
+                              }
+                          </select>
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_block"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_police_station" class="form-label header-label"
+                            >Police Station</label
+                          >
+                          <span class="text-danger">*</span>
+                          <select
+                            class="form-select"
+                            id="pwcf_pm_police_station"
+                            aria-label="Select Police Station"
+                            formControlName="pwcf_pm_police_station"
+                          >
+                            <option selected disabled>Select Police Station</option>
+                            <option value="">Select Police Station</option>
+                            <option value="1">
+                              Police Station one
+                            </option>
+                            <option value="2">
+                              Police Station Two
+                            </option>
+                            <option value="3">
+                              Police Station Three
+                            </option>
+                            <option value="4">
+                              Police Station Four
+                            </option>
+                          </select>
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_police_station"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_village" class="form-label header-label"
+                            >Village/Ward</label
+                          >
+                          <span class="text-danger">*</span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="pwcf_pm_village"
+                            aria-label="Enter Name of the Village"
+                            placeholder="Enter Name of Village"
+                            formControlName="pwcf_pm_village"
+                          />
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_village"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_area" class="form-label header-label"
+                            >Area/Locality</label
+                          >
+                          <span class="text-danger">*</span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="pwcf_pm_area"
+                            aria-label="Enter Name of the Area"
+                            placeholder="Enter Name of Area"
+                            formControlName="pwcf_pm_area"
+                          />
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_area"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_street" class="form-label header-label"
+                            >Street/Building</label
+                          >
+                          <span class="text-danger">*</span>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="pwcf_pm_street"
+                            aria-label="Enter Name of the Street"
+                            placeholder="Enter Name of Street"
+                            formControlName="pwcf_pm_street"
+                          />
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_street"></app-form-error>
+                        </div>
+                      </div>
+      
+                      <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="pwcf_pm_pin" class="form-label header-label"
+                            >Postal Code</label
+                          >
+                          <span class="text-danger">*</span>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="pwcf_pm_pin"
+                            aria-label="Enter Postal code"
+                            placeholder="Enter Postal code"
+                            formControlName="pwcf_pm_pin"
+                            (input)="onAgeInput($event)"
+                          />
+                          <app-form-error [field]="form17_ef.controls.pwcf_pm_pin"></app-form-error>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                }
+               
+            <div class="row mt-2">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="pwcf_occupation" class="form-label header-label"
+                    >Occupation/Designation</label
+                  >
+                  <span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="pwcf_occupation"
+                    aria-label="Enter Name of the Designation"
+                    placeholder="Enter Name of Designation"
+                    formControlName="pwcf_occupation"
+                  />
+                  <app-form-error [field]="form17_ef.controls.pwcf_occupation"></app-form-error>
+                </div>
+              </div>
+
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="pwcf_mobile_number" class="form-label header-label"
+                    >Contact Number</label
+                  >
+                  <span class="text-danger">*</span>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="pwcf_mobile_number"
+                    aria-label="Enter Contact Number"
+                    placeholder="Enter Contact Number"
+                    formControlName="pwcf_mobile_number"
+                  />
+                  <app-form-error [field]="form17_ef.controls.pwcf_mobile_number"></app-form-error>
+                </div>
+              </div>
+            </div>    
+  
+            <div class="row">
+              <div
+                class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3"
+              >
+                <a routerLink="/portal/registration/form-d/{{draftId}}">
+                  <button class="btn cancel-button-style">Back</button>
+                </a>
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+                } @else {
+                  <button type="button" disabled class="btn save-next-btn-style">
+                    Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+            </div>
+            </form>
+           
+
+          </div>
+        </div>
+      </div>
+</section>

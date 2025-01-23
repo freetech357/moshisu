@@ -1,0 +1,45 @@
+
+<section id="superadmin-sidebar-component">
+  <div class="sidebar-menus">
+    <ul class="sidebar-nav" id="sidebar-nav">
+      <li class="nav-item">
+        <a routerLink="/portal/dashboard" routerLinkActive="active" class="nav-link collapsed">
+          <i class="fa-solid fa-home me-2"></i> Dashboard
+        </a>
+      </li>
+
+      <li class="nav-item" *ngIf="hasRoleId(15)">
+        <a routerLink="/portal/registration" routerLinkActive="active" class="nav-link collapsed">
+          <i class="fa-solid fa-address-card me-2"></i> CWC Registration
+        </a>
+      </li>
+      <li class="nav-item" *ngIf="hasRoleId(16)">
+        <a routerLink="/portal/jjb/jjb-registration" routerLinkActive="active" class="nav-link collapsed">
+          <i class="fa-solid fa-address-card me-2"></i> JJB Registration
+        </a>
+      </li>
+
+      <!-- @if (app_details) {
+        @if (app_details.is_submitted != true) {
+          <li class="nav-item">
+            <a routerLink="/portal/application/personal-information" routerLinkActive="active" class="nav-link collapsed">
+              <i class="fa-solid fa-square-poll-horizontal me-2"></i> Apply for Scheme
+            </a>
+          </li>
+        } @else {
+          <li class="nav-item">
+            <a routerLink="/portal/application/application-status" routerLinkActive="active" class="nav-link collapsed">
+              <i class="fa-regular fa-circle-question me-2"></i> View Application Status
+            </a>
+          </li>
+        }
+      } -->
+    </ul>
+  </div>
+
+  <!-- <div id="logout-section">
+      <span>Copyright &copy; {{ currentYear }} Ama Pokhari. All Rights Reserved.</span>
+  </div> -->
+</section>
+
+

@@ -1,0 +1,131 @@
+table th,
+table td {
+  font-size: 0.875rem;
+}
+
+.form-control:not([type="checkbox"]),
+select.form-select {
+  font-size: 0.875rem;
+  padding: 8px 15px;
+}
+
+table td {
+  color: #979aa7 !important;
+}
+
+::placeholder {
+  font-size: 0.875rem;
+}
+
+.btn-style {
+  color: white !important;
+  font-weight: 500 !important;
+  background-color: #d56600 !important;
+}
+.register-child {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+/* Form A&b Css */
+.wrapper-header {
+    font-weight: 600;
+  font-size: 30px;
+  color: #d56600;
+}
+.wrapper-sub-child-header span {
+  font-weight: 700;
+}
+.next-child-header .commom-style {
+  color: #333333;
+  font-weight: 600;
+  font-size: 18px;
+}
+.sub-heading-wrapper .sub-header {
+  font-weight: 600;
+  color: #4c4c4c;
+  font-size: 18px;
+}
+.sub-heading-wrapper .horizontal-bar {
+  height: 5px;
+  margin: 0;
+  border-top: 2px solid #e98209 !important;
+}
+
+.sub-heading-wrapper .sub-horizontal-bar{
+    height: 5px;
+    margin: 0;
+    border-top: 2px solid #8D98AF !important; 
+}
+
+.header-label{
+  font-weight: 500 !important;
+}
+
+.custom-checkbox:checked {
+    background-color: #E98209;
+    border-color: #E98209;
+}
+
+.cancel-button-style{
+    border: 1px solid #D56600 !important;
+    color: #D56600 !important;
+    font-weight: 500 !important;
+}
+
+.save-next-btn-style{
+    background-color: #D56600 !important;
+    color: white !important;
+    font-weight: 500 !important;
+}
+.bold-heading{
+    font-weight: bold !important;
+    margin-bottom: 0rem !important;
+}
+.error-box {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+}
+.stepper {
+  display: flex;
+  align-items: center;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step .circle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: whitesmoke;
+  color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.step .label {
+  font-size: 14px;
+  text-align: center;
+}
+
+.step.active .circle {
+  background-color: #D56600;
+  color: white;
+}
+
+.line {
+  width: 60px;
+  height: 2px;
+  background-color: #000000;
+}

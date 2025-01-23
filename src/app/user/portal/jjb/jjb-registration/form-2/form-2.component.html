@@ -1,0 +1,559 @@
+<section id="jjb-registration-form-2-component">
+    <form [formGroup]="form2" (submit)="saveAsDraft()">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step ">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle ">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+             <!--Displaying Form Error Messages-->
+             <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+              <strong>Errors in Step 2:</strong>
+              <ul>
+                <li *ngFor="let error of displayErrors">{{ error }}</li>
+              </ul>
+            </div>
+            <!-- Family Details -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">C : Family Details</div>
+              <hr class="horizontal-bar" />
+              <div class="form-group">
+                <div class="row my-1">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Availability <span class="text-danger">*</span></label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                      class="form-check-input"
+                      type="radio"
+                      id="availabilityYes"
+                      value="1"
+                      formControlName="family_availibility"
+                      (change)="onAvailabilityChange($event)"
+                    />
+                      <label class="form-check-label" for="availabilityYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                      class="form-check-input"
+                      type="radio"
+                      id="availabilityNo"
+                      value="0"
+                      formControlName="family_availibility"
+                      (change)="onAvailabilityChange($event)"
+                    />
+                      <label class="form-check-label" for="availabilityNo">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="form2.get('family_availibility')?.value === '1'">
+              <div formArrayName="familyDetails">
+                <div *ngFor="let familyMember of familyDetails.controls; let i = index" [formGroupName]="i">
+                <div id="form-container">
+                  <div class="row mt-2">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="name_{{i}}" class="form-label header-label"
+                          >Name</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="name_{{i}}"
+                          aria-label="Enter Name"
+                          placeholder="Enter Name"
+                          formControlName="name"
+                        />
+                      </div>
+                    </div>
+ 
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label
+                          for="relation_with_child_{{i}}"
+                          class="form-label header-label"
+                          >Relation with Child</label
+                        >
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="relation_with_child_{{i}}"
+                          aria-label="Select Date Of Birth"
+                          formControlName="relation_with_child"
+                        >
+                          <option value="null">Select Relation</option>
+                          <option value="father">Father</option>
+                          <option value="mother">Mother</option>
+                          <option value="brother">Brother</option>
+                          <option value="sister">Sister</option>
+                          <option value="uncle">Uncle</option>
+                          <option value="aunt">Aunt</option>
+                          <option value="cousin">Cousin</option>
+                          <option value="grandfather">Grandfather</option>
+                          <option value="grandmother">Grandmother</option>
+                          <option value="nephew">Nephew</option>
+                          <option value="niece">Niece</option>
+                          <option value="spouse">Spouse</option>
+                        </select>
+                      </div>
+                    </div>
+ 
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="age_{{i}}" class="form-label header-label">Age</label
+                        ><span class="text-danger">*</span>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="age_{{i}}"
+                          aria-label="Enter Your age"
+                          placeholder="Enter Your age"
+                          formControlName="fd_age"
+                          (input)="onAgeInput($event)"
+                        />
+                      </div>
+                    </div>
+   
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label class="form-label header-label">Gender</label>
+                        <span class="text-danger">*</span>
+                        <div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="genderMale_{{i}}"
+                              value= 1
+                              formControlName="gender"
+                            />
+                            <label class="form-check-label" for="genderMale_{{i}}"
+                              >Male</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="genderFemale_{{i}}"
+                              value=2
+                              formControlName="gender"
+                            />
+                            <label class="form-check-label" for="genderFemale_{{i}}"
+                              >Female</label
+                            >
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="genderOther_{{i}}"
+                              value=3
+                              formControlName="gender"
+                            />
+                            <label class="form-check-label" for="genderOther_{{i}}"
+                              >Other</label
+                            >
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+   
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="education_{{i}}" class="form-label header-label"
+                          >Education</label
+                        >
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="education_{{i}}"
+                          aria-label="Select Education"
+                          formControlName="education"
+                        >
+                          <option value="null">Select Education</option>
+                          <option value="primary_school">Primary School</option>
+                          <option value="secondary_school">Secondary School</option>
+                          <option value="higher_secondary_school">Higher Secondary School</option>
+                          <option value="undergraduate">Undergraduate</option>
+                          <option value="postgraduate">Postgraduate</option>
+                          <option value="doctorate">Doctorate</option>
+                        </select>
+                      </div>
+                    </div>
+   
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="occupation_{{i}}" class="form-label header-label"
+                          >Occupation</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="occupation_{{i}}"
+                          aria-label="Enter Your Ocuupation"
+                          placeholder="Enter Your Ocuupation"
+                          formControlName="occupation"
+                        />
+                      </div>
+                    </div>
+   
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="monthly_income_{{i}}" class="form-label header-label"
+                          >Monthly Income ( Rs. )</label
+                        ><span class="text-danger">*</span>
+                        <input
+                          type="number"
+                          class="form-control"
+                          id="monthly_income_{{i}}"
+                          aria-label="Enter Your Monthly Income"
+                          placeholder="Enter Your Monthly Income (Rs.)"
+                          formControlName="monthly_income"
+                        />
+                      </div>
+                    </div>
+   
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="health_status_{{i}}" class="form-label header-label"
+                          >Health Status</label
+                        >
+                        <span class="text-danger">*</span>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="health_status_{{i}}"
+                          aria-label="Enter Health Status"
+                          placeholder="Enter Health Status"
+                          formControlName="health_status"
+                        />
+                      </div>
+                    </div>
+   
+                    <!-- <div class="col-md-4 mb-3"></div> -->
+   
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="mental_illness_history_{{i}}" class="form-label header-label"
+                          >Mental illness</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="mental_illness_history_{{i}}"
+                          aria-label="Describe your Problem"
+                          placeholder="Describe your Problem"
+                          formControlName="mental_illness_history"
+                        />
+                      </div>
+                    </div>
+ 
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="addiction_history_{{i}}" class="form-label header-label"
+                        >Addictions ( If any )
+                      </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="addiction_history_{{i}}"
+                        aria-label="Describe your Addictions"
+                        placeholder="Describe your Addictions"
+                        formControlName="addiction_history"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <!--Add button-->
+                <button *ngIf="i === 0"
+                    id="add-button" class="btn add-button d-flex align-items-center gap-2" type="button" (click)="addFamilyMember()">
+                    <i class="fas fa-plus"></i>
+                    <span>Add</span>
+                </button>
+                <!--Delete button-->
+                <button
+                      type="button" *ngIf="i > 0"
+                      (click)="removeFamilyMember(i)"
+                      class="btn btn-danger"
+                    >
+                      <i></i> Delete
+                    </button>
+              </div>
+            </div>
+            </div>
+          </div>
+          </div>
+ 
+            <div class="sub-heading-wrapper mt-4">
+              <div class="sub-header mb-2">
+              D : Reasons for leaving home
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="form-group">
+                <div class="row my-1">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Left Home <span class="text-danger">*</span></label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="agreeYes"
+                        value="1"
+                        formControlName="leftHome" 
+                      />
+                      <label class="form-check-label" for="agreeYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="agreeNo"
+                        value="0"
+                        formControlName="leftHome" 
+                        (change)="form2.get('reason_for_leaving_home')?.reset()"
+                      />
+                      <label class="form-check-label" for="agreeNo">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngIf="form2.get('leftHome')?.value === '1'">
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-12 mb-3">
+                      <div class="form-group">
+                        <label for="reason_for_leaving_home" class="form-label header-label"
+                          >Specify Reason</label
+                        >
+                        <span class="text-danger">*</span>
+                        <textarea
+                          class="form-control"
+                          id="reason_for_leaving_home"
+                          placeholder="Enter Specific Reason"
+                          rows="3"
+                          formControlName="reason_for_leaving_home"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+ 
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                E : Whether there is a history of involvement of family members in
+                offences, if any
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="form-group">
+                <div class="row my-1">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">If any</label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="agreeYes"
+                        value="1"
+                        formControlName="family_involvement_in_offences"
+                      />
+                      <label class="form-check-label" for="agreeYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="agreeNo"
+                        value="0"
+                        formControlName="family_involvement_in_offences"
+                        (change)="form2.get('details_of_offences')?.reset()"
+                      />
+                      <label class="form-check-label" for="agreeNo">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="sub-heading-wrapper mt-1">
+                <div class="row mt-2">
+                  
+                  <div *ngIf="form2.get('family_involvement_in_offences')?.value === '1'">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="specifyDetails" class="form-label header-label"
+                        >Specify Details</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                          class="form-control"
+                          id="specifyDetails"
+                          placeholder="Enter Specific Details"
+                          rows="3"
+                          formControlName="details_of_offences"
+                        ></textarea>
+                    </div>
+                  </div>
+                </div>
+                </div>
+              </div>
+            </div>
+ 
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">F : Habits of the child</div>
+              <hr class="horizontal-bar" />
+              <div class="row my-2">
+                <div class="col-md-3">
+                  <label class="form-label bold-heading">Bad Habits</label>
+                </div>
+                <div class="col-md-9">
+                  <div class="row">
+                    <div class="col-md-4 mb-3" *ngFor="let bad_habits of bad_habit">
+                      <div class="form-check d-flex gap-2">
+                        <input
+                          type="checkbox"
+                          class="form-check-input"
+                          [id]="bad_habits.id"
+                          [value]="bad_habits.value"
+                          (change)="onBadHabitsCheckboxChange($event)"
+                          [checked]="isBadHabitsChecked(bad_habits.value)"
+                        />
+                        <label class="form-check-label" [for]="bad_habits.id">{{ bad_habits.label }}</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="isDrugUseChecked">
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="drugUsespecify" class="form-label header-label"
+                      >If Drug use Specify</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="drugUsespecify"
+                      aria-label="Describe Your Issue"
+                      placeholder="Describe Your Issue"
+                      formControlName="drug_use_specify"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-4 mb-3">
+                  <div class="form-group">
+                    <label for="anyOtherHbait" class="form-label header-label"
+                      >Any other Habit</label
+                    >
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="anyOtherHbait"
+                      aria-label="Describe Your Issue"
+                      placeholder="Describe Your Issue"
+                      formControlName="bad_habits_specify"
+                    />
+                  </div>
+                </div>
+              </div>
+ 
+              <div class="row my-2">
+                  <div class="col-md-3">
+                    <label class="form-label bold-heading">Good Habits</label>
+                  </div>
+                  <div class="col-md-9">
+                    <div class="row">
+                      <div class="col-md-4 mb-3" *ngFor="let habit of good_habit">
+                        <div class="form-check d-flex gap-2">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            [id]="habit.id"
+                            [value]="habit.value"
+                            (change)="onGoodHabitsCheckboxChange($event)"
+                            [checked]="isGoodHabitsChecked(habit.value)"
+                          />
+                          <label class="form-check-label" [for]="habit.id">{{ habit.label }}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+                <div class="row" *ngIf="isGoodHabitsOthers">
+                  <div class="col-md-4 mb-3">
+                    <div class="form-group">
+                      <label for="anyOther" class="form-label header-label"
+                        >Any Other</label
+                      >
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="anyOther"
+                        aria-label="Describe Your Issue"
+                        placeholder="Describe Your Issue"
+                        formControlName="good_habits_others"
+                      />
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+ 
+          <div class="row">
+            <div
+              class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3"
+            >
+              <a routerLink="/portal/jjb/jjb-registration/form-1/{{draftId}}">
+                <button class="btn cancel-button-style">Back</button>
+              </a>
+              @if (!isFormSubmitInProgress) {
+                <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+              } @else {
+                <button type="button" disabled class="btn save-next-btn-style">
+                  Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                </button>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+</section>

@@ -1,0 +1,359 @@
+<section id="jjb-registration-form-3-component">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step ">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle ">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card mt-3 position-relative bg-white">
+          <form [formGroup]="form_3" (submit)="saveAsDraft()">
+          <div class="card-body">
+             <!--Displaying Form Error Messages-->
+             <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+              <strong>Errors in Step 3:</strong>
+              <ul>
+                <li *ngFor="let error of displayErrors">{{ error }}</li>
+              </ul>
+            </div>
+            <!-- Family Details -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">G : Employment Details</div>
+              <hr class="horizontal-bar" />
+              <div id="form-container">
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-2">
+                      <label class="form-label bold-heading">Employed <span class="text-danger">*</span></label>
+                    </div>
+                    <div class="col-md-10">
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeYes"
+                          value="1"
+                          formControlName="employed"
+                        />
+                        <label class="form-check-label" for="agreeYes">Yes</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input
+                          class="form-check-input"
+                          type="radio"
+                          id="agreeNo"
+                          value="0"
+                          formControlName="employed"
+                          (change)="form_3.get('specify_details')?.reset()"
+                        />
+                        <label class="form-check-label" for="agreeNo">No</label>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="form_3.get('employed')?.value === '1'">
+                <div class="row mt-2">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="specifyDetails" class="form-label header-label">
+                        Specify Details
+                      </label>
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="specifyDetails"
+                        placeholder="Enter Specify Details"
+                        rows="3"
+                        formControlName="specify_details"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </div>
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">H : Details of Income Utilization</div>
+              <hr class="horizontal-bar" />
+              
+              <!-- Sent to family to meet family need -->
+              <div class="form-group">
+                <div class="row my-1">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Sent to family to meet family need</label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="sentToFamilyYes"
+                        value=1
+                        formControlName="sent_to_family"
+                      />
+                      <label class="form-check-label" for="sentToFamilyYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="sentToFamilyNo"
+                        value=0
+                        formControlName="sent_to_family"
+                      />
+                      <label class="form-check-label" for="sentToFamilyNo">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Used by self -->
+              <div class="form-group">
+                <div class="row my-1">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Used by self</label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="usedBySelfYes"
+                        value=1
+                        formControlName="used_by_self"
+                      />
+                      <label class="form-check-label" for="usedBySelfYes">Yes</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                      <input
+                        class="form-check-input"
+                        type="radio"
+                        id="usedBySelfNo"
+                        value=0
+                        formControlName="used_by_self"
+                        (change)="resetUseForCheckboxes()"
+                      />
+                      <label class="form-check-label" for="usedBySelfNo">No</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+              <!-- Checkboxes for different uses -->
+              <div *ngIf="form_3.get('used_by_self')?.value === '1'">
+                <div class="row my-2">
+                  <div class="col-md-2">
+                    <label class="form-label bold-heading">Used For</label>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="row">
+                      <div class="col-md-4 mb-3" *ngFor="let use_for of use_for">
+                        <div class="form-check d-flex gap-2">
+                          <input
+                            type="checkbox"
+                            class="form-check-input"
+                            [id]="use_for.id"
+                            [value]="use_for.value"
+                            (change)="onUseForCheckboxChange($event)"
+                            [checked]="isUseForChecked(use_for.value)"
+                          />
+                          <label class="form-check-label" [for]="use_for.id">{{ use_for.label }}</label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                I : The Details of Education of the Child
+              </div>
+              <hr class="horizontal-bar" />
+              <div id="form-container">
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="educationalLevel" class="form-label header-label">
+                          Educational Level
+                        </label>
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="educationalLevel"
+                          aria-label="Select Educational Level"
+                          formControlName="education_level"
+                        >
+                          <option value="">Select Educational Level</option>
+                          <option value="1">Illiterate</option>
+                          <option value="2">Studied up to V standard</option>
+                          <option value="3">Studied above V standard but below VIII Standard</option>
+                          <option value="4">Studied above VIII Standard but below X Standard</option>
+                          <option value="5">Studied above X Standard</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">J : The Reason for Leaving School</div>
+              <hr class="horizontal-bar" />
+              <div id="form-container">
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="reason" class="form-label header-label">Reason</label>
+                        <select
+                          class="form-select"
+                          id="reason"
+                          aria-label="Select Reason"
+                          formControlName="reason_for_leaving_school"
+                        >
+                          <option value="">Select Reason</option>
+                          <option value="1">Failure in the class last studied</option>
+                          <option value="2">Lack of interest in the school activities</option>
+                          <option value="3">Indifferent attitudes of the teachers</option>
+                          <option value="4">Peer group Influence</option>
+                          <option value="5">To earn and Support the Family</option>
+                          <option value="6">Sudden demise of parents</option>
+                          <option value="7">Bullying in school</option>
+                          <option value="8">Rigid school atmosphere</option>
+                          <option value="9">Absentees followed by running away from school</option>
+                          <option value="10">No age-appropriate school nearby</option>
+                          <option value="11">Abuse in school</option>
+                          <option value="12">Humiliation in school</option>
+                          <option value="13">Corporal Punishment</option>
+                          <option value="14">Medium of instruction</option>
+                          <option value="15">Others</option>
+                        </select>
+                      </div>
+                    </div>
+                    <div class="col-md-4 mb-3" *ngIf="form_3.get('reason_for_leaving_school')?.value === '15'">
+                      <div class="form-group">
+                        <label for="otherReason" class="form-label header-label">
+                          Other (If Other Specify) <span class="text-danger">*</span>
+                        </label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="otherReason"
+                          aria-label="Specify Other Reason"
+                          placeholder="Other"
+                          formControlName="other_reason"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                K : The Details of the School in Which Studied Last
+              </div>
+              <hr class="horizontal-bar" />
+              <div id="form-container">
+                <div class="form-group">
+                  <div class="row my-1">
+                    <div class="col-md-4 mb-3">
+                      <div class="form-group">
+                        <label for="schoolType" class="form-label header-label">School Type</label>
+                        <span class="text-danger">*</span>
+                        <select
+                          class="form-select"
+                          id="schoolType"
+                          aria-label="Select School Type"
+                          formControlName="school_type"
+                        >
+                          <option value="">Select School Type</option>
+                          <option value="1">Corporation</option>
+                          <option value="2">Municipal</option>
+                          <option value="3">Panchayat</option>
+                          <option value="4">Government</option>
+                          <option value="5">SC Welfare school</option>
+                          <option value="6">BC welfare school</option>
+                          <option value="7">Private management</option>
+                          <option value="8">School Under NCLP</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">L : Vocational Training</div>
+              <hr class="horizontal-bar" />
+              <div class="row mt-2">
+                <div class="col-md-12 mb-3">
+                  <div class="form-group">
+                    <label for="vocational_training_dt" class="form-label header-label">Provide Details</label>
+                    <span class="text-danger">*</span>
+                    <textarea
+                      class="form-control"
+                      id="vocational_training_dt"
+                      placeholder="Enter Provide Details"
+                      rows="3"
+                      formControlName="vocational_training_details"
+                    ></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+  
+          <div class="row">
+            <div
+              class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3"
+            >
+            <a routerLink="/portal/jjb/jjb-registration/form-2/{{draftId}}">
+                <button class="btn cancel-button-style">Back</button>
+              </a>
+              @if (!isFormSubmitInProgress) {
+                <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+              } @else {
+                <button type="button" disabled class="btn save-next-btn-style">
+                  Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                </button>
+              }
+            </div>
+          </div>
+        </form>
+        </div>
+      </div>
+</section>

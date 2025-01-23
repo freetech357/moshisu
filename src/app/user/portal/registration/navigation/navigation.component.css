@@ -1,0 +1,105 @@
+/* .breadcrumb-item.active {
+    font-weight: bold;
+    color: #007bff;
+  } */
+
+  .breadcrumb {
+    padding: 0;
+    background-color: transparent;
+  }
+  
+  .breadcrumb-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0;
+  }
+  
+  .step-circle {
+    width: 50px;
+    height: 50px;
+    background-color: #007bff;
+    color: white;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  .breadcrumb-item.active .step-circle {
+    background-color: #28a745; /* Active step color */
+  }
+  
+  .step-line {
+    width: 100px;
+    height: 2px;
+    background-color: #6c757d;
+    position: absolute;
+    top: 50%;.breadcrumb {
+        padding: 0;
+        background-color: transparent;
+      }
+      
+      .breadcrumb-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 0;
+        position: relative;
+      }
+      
+      .step-circle {
+        width: 70px; /* Increased the size for better visibility */
+        height: 70px; /* Increased the size for better visibility */
+        background-color: #007bff;
+        color: white;
+        border-radius: 50%;
+        text-align: center;
+        line-height: 70px; /* Aligns text vertically */
+        font-size: 16px; /* Increased font size */
+      }
+      
+      .breadcrumb-item.active .step-circle {
+        background-color: #28a745; /* Active step color */
+      }
+      
+      .step-line {
+        width: 120px; /* Adjust this to fit the space between steps */
+        height: 2px;
+        background-color: #6c757d;
+        position: absolute;
+        top: 50%;
+        left: 80px; /* Adjust according to the size of .step-circle */
+        transform: translateY(-50%);
+      }
+      
+      .breadcrumb-item.active .step-line {
+        background-color: #28a745; /* Active line color */
+      }
+      
+      .breadcrumb-item:last-child .step-line {
+        display: none;
+      }
+      
+      .step-circle a, .step-circle span {
+        color: white;
+        text-decoration: none;
+        display: block;
+        width: 100%;
+        height: 100%;
+      }
+      
+    left: 55px;
+    transform: translateY(-50%);
+  }
+  
+  .breadcrumb-item.active .step-line {
+    background-color: #28a745; /* Active line color */
+  }
+  
+  .breadcrumb-item:last-child .step-line {
+    display: none;
+  }
+  
+  .step-circle a, .step-circle span {
+    color: white;
+    text-decoration: none;
+  }
+  

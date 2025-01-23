@@ -1,0 +1,221 @@
+<section id="user-registration-form-17-c">
+  <div class="container">
+    <div class="card position-relative bg-white">
+      <div class="card-body">
+        <!-- Stepper Content -->
+        <div class="stepper d-flex justify-content-center mt-3">
+          <div class="step ">
+            <div class="circle">1</div>
+            <div class="label">Step 1</div>
+          </div>
+          <div class="line"></div>
+          <div class="step active">
+            <div class="circle">2</div>
+            <div class="label">Step 2</div>
+          </div>
+          <div class="line"></div>
+          <div class="step">
+            <div class="circle">3</div>
+            <div class="label">Step 3</div>
+          </div>
+          <div class="line"></div>
+          <div class="step">
+            <div class="circle">4</div>
+            <div class="label ">Step 4</div>
+          </div>
+          <div class="line"></div>
+          <div class="step">
+            <div class="circle">5</div>
+            <div class="label">Step 5</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="card mt-3 position-relative bg-white">
+      <div class="card-body">
+        <!--Displaying Form Error Messages-->
+        <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+          <strong>Errors in Step 2:</strong>
+          <ul>
+            <li *ngFor="let error of displayErrors">{{ error }}</li>
+          </ul>
+        </div>
+        <!-- The child who is being produced -->
+         <form [formGroup]="form17_c" (submit)="saveAsDraft()">
+          <div class="sub-heading-wrapper mt-2">
+            <div class="sub-header mb-2">C : The child who is being produced</div>
+            <hr class="horizontal-bar" />
+            <div class="row mt-2">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="child_photo" class="form-label header-label">Photo <span class="text-danger">*</span>
+                    @if(draft_details.child_photo){
+                      <a href="{{ draft_details.child_photo }}" target="_blank" class=" ms-2">
+                          <i class="fa fa-download me-1"></i>
+                      </a>
+                    }
+                  </label>
+                  <input type="file" class="form-control" id="child_photo" aria-label="Upload Photo" formControlName="child_photo"  />
+                  <app-form-error [field]="form17_c.controls.child_photo"></app-form-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="row">
+                <div class="col-md-2">
+                  <label class="form-label bold-heading">Child Name is Known</label>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="if_name_unknown" id="agreeYes" value="1" formControlName="if_name_unknown" (change)="form17_c.get('child_name')!.setValue('')" />
+                    <label class="form-check-label" for="agreeYes">Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="if_name_unknown" id="agreeNo" value="0" formControlName="if_name_unknown" (change)="form17_c.get('child_name')!.setValue('Name Unknown')" />
+                    <label class="form-check-label" for="agreeNo">No</label>
+                  </div>
+                  <app-form-error [field]="form17_c.controls.if_name_unknown"></app-form-error>
+                </div>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="child_name" class="form-label header-label">Name</label>
+                  <span class="text-danger">*</span>
+                  <input type="text" class="form-control" id="child_name" aria-label="Enter Name" placeholder="Enter Name" formControlName="child_name" #nameInput />
+                  <app-form-error [field]="form17_c.controls.child_name"></app-form-error>
+
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="child_age" class="form-label header-label">Age</label>
+                  <span class="text-danger">*</span>
+                  <input type="number" class="form-control" id="child_age" aria-label="Enter Your age" placeholder="Enter Your age" formControlName="child_age" (input)="onAgeInput($event)"  />
+                  <app-form-error [field]="form17_c.controls.child_age"></app-form-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group my-2">
+              <div class="row">
+                <div class="col-md-2">
+                  <label class="form-label bold-heading">Age According <span class="text-danger">*</span></label>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="age_according" id="agreeYes" value="0" formControlName="age_according"  />
+                    <label class="form-check-label" for="agreeYes">Stated Age</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="age_according" id="agreeNo" value="1" formControlName="age_according"  />
+                    <label class="form-check-label" for="agreeNo">Age based on appearance</label>
+                  </div>
+                  <app-form-error [field]="form17_c.controls.age_according"></app-form-error>
+                </div>
+                
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-md-2">
+                  <label class="form-label bold-heading">Gender <span class="text-danger">*</span></label>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="child_gender" id="boy" value="0" formControlName="child_gender"  />
+                    <label class="form-check-label" for="boy">Boy</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="child_gender" id="girl" value="1" formControlName="child_gender"  />
+                    <label class="form-check-label" for="girl">Girl</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="child_gender" id="others" value="2" formControlName="child_gender"  />
+                    <label class="form-check-label" for="others">Others</label>
+                  </div>
+                  <app-form-error [field]="form17_c.controls.child_gender"></app-form-error>
+                </div>
+              </div>
+            </div>
+            <div class="form-group mt-3">
+              <div class="row">
+                <div class="col-md-2">
+                  <label class="form-label bold-heading">Aadhar Availability</label>
+                </div>
+                <div class="col-md-10">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="child_aadhar_availibility" id="aadharYes" value="1" formControlName="child_aadhar_availibility"  />
+                    <label class="form-check-label" for="aadharYes">Yes</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="child_aadhar_availibility" id="aadharNo" value="0" formControlName="child_aadhar_availibility" (change)="form17_c.get('child_aadhar_number')?.reset(); form17_c.get('child_aadhar_copy')?.reset()" />
+                    <label class="form-check-label" for="aadharNo">No</label>
+                  </div>
+                  <app-form-error [field]="form17_c.controls.child_aadhar_availibility"></app-form-error>
+                </div>
+              </div>
+            </div>
+            <div class="row my-4" *ngIf="form17_c.get('child_aadhar_availibility')?.value === '1'">
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="AadharNumber" class="form-label header-label">Aadhar Number 
+                    <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" id="child_aadhar_number" aria-label="Enter Your Aadhar Number" placeholder="Enter Your Aadhar Number" formControlName="child_aadhar_number"  />
+                  <app-form-error [field]="form17_c.controls.child_aadhar_number"></app-form-error>
+
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="uploadAadhar" class="form-label header-label">Upload copy of Aadhar
+                    @if(draft_details.child_aadhar_copy){
+                      <a href="{{ draft_details.child_aadhar_copy }}" target="_blank" class=" ms-2">
+                          <i class="fa fa-download me-1"></i>
+                      </a>
+                    }
+                  </label>
+                  <input type="file" class="form-control" id="child_aadhar_copy" aria-label="Upload Aadhar" formControlName="child_aadhar_copy"  />
+                  <app-form-error [field]="form17_c.controls.child_aadhar_copy"></app-form-error>
+                </div>
+              </div>
+            </div>
+            <div class="row my-4">
+              <div class="col-md-12 mb-3">
+                <div class="form-group">
+                  <label for="identity_marks" class="form-label header-label">Identity mark/s 
+                    <span class="text-danger">*</span></label>
+                  <textarea class="form-control" id="identityMarks" placeholder="Enter identity marks" rows="3" formControlName="identity_marks" ></textarea>
+                  <app-form-error [field]="form17_c.controls.identity_marks"></app-form-error>
+                </div>
+              </div>
+              <div class="col-md-4 mb-3">
+                <div class="form-group">
+                  <label for="languageUsed" class="form-label header-label">Language used by the child</label>
+                  <span class="text-danger">*</span>
+                  <input type="text" class="form-control" id="languageUsed" aria-label="Enter Language Used by the Child" placeholder="Enter language used by the child" formControlName="language"  />
+                  <app-form-error [field]="form17_c.controls.language"></app-form-error>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        <div class="row">
+          <div class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3">
+            <a routerLink="/portal/registration/form-ab/{{draftId}}">
+              <button class="btn cancel-button-style" >Back</button>
+            </a>
+            @if (!isFormSubmitInProgress) {
+              <button type="submit"  class="btn save-next-btn-style">Save & Next</button>
+            } @else {
+              <button type="button" disabled class="btn save-next-btn-style">
+                Saving... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+              </button>
+            }
+          </div>
+        </div>
+     </form>
+      </div>
+    </div>
+  </div>
+</section>

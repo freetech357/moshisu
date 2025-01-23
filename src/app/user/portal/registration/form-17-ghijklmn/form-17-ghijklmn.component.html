@@ -1,0 +1,393 @@
+<section id="user-registration-form-17-ghijklmn">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step ">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle ">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+            <form [formGroup]="form17_ghijklmn" (submit)="saveAsDraft()">
+              <!-- Circumstances under which the child was found -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                  G : Circumstances under which the child was found
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-12 mb-3">
+                      <div class="form-group">
+                        <label for="specifyDetails" class="form-label header-label"
+                          >Specify Details</label
+                        >
+                        <span class="text-danger">*</span>
+                        <textarea
+                          class="form-control"
+                          id="circumstances_under_child_found"
+                          placeholder="Enter Specify Details"
+                          rows="3"
+                          formControlName="circumstances_under_child_found"
+                        ></textarea>
+                        <app-form-error [field]="form17_ghijklmn.controls.circumstances_under_child_found"></app-form-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Allegation by the child of any offence/ abuse committed on the
+                  child in any manner -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                  H : Allegation by the child of any offence/ abuse committed on the
+                  child in any manner
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-12 mb-3">
+                      <div class="form-group">
+                        <label for="specifyDetails" class="form-label header-label"
+                          >Specify Details</label
+                        >
+                        <span class="text-danger">*</span>
+                        <textarea
+                          class="form-control"
+                          id="offence_commited_on_child"
+                          placeholder="Enter Specify Details"
+                          rows="3"
+                          formControlName="offence_commited_on_child"
+                        ></textarea>
+                        <app-form-error [field]="form17_ghijklmn.controls.offence_commited_on_child"></app-form-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <!-- Physical condition of the child -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                    I : Physical condition of the child
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-12 mb-3">
+                      <div class="form-group">
+                        <label for="specifyDetails" class="form-label header-label"
+                          >Specify Details</label
+                        >
+                        <span class="text-danger">*</span>
+                        <textarea
+                          class="form-control"
+                          id="physical_condition"
+                          placeholder="Enter Specify Details"
+                          rows="3"
+                          formControlName="physical_condition"
+                        ></textarea>
+                        <app-form-error [field]="form17_ghijklmn.controls.physical_condition"></app-form-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Belongings of the child at the time of production -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                    J : Belongings of the child at the time of production
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-12 mb-3">
+                      <div class="form-group">
+                        <label for="specifyDetails" class="form-label header-label"
+                          >Specify Details</label
+                        >
+                        <span class="text-danger">*</span>
+                        <textarea
+                          class="form-control"
+                          id="belongings_of_the_child"
+                          placeholder="Enter Specify Details"
+                          rows="3"
+                          formControlName="belongings_of_the_child"
+                        ></textarea>
+                        <app-form-error [field]="form17_ghijklmn.controls.belongings_of_the_child"></app-form-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Date and Time at which the child came to the CCI/SAA -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                    K : Date and Time at which the child came to the CCI/SAA
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="date_and_time_child_came" class="form-label header-label"
+                            >Date & Time</label
+                          >
+                          <span class="text-danger">*</span>
+                          <input
+                            type="datetime-local"
+                            class="form-control"
+                            id="date_and_time_child_came"
+                            aria-label="Enter Time"
+                            formControlName="date_and_time_child_came"
+                          />
+                          <app-form-error [field]="form17_ghijklmn.controls.date_and_time_child_came"></app-form-error>
+                        </div>
+                      </div>
+                      <!-- <div class="col-md-4 mb-3">
+                        <div class="form-group">
+                          <label for="date" class="form-label header-label"
+                            >Date</label
+                          >
+                          <span class="text-danger">*</span>
+                          <input
+                            type="date"
+                            class="form-control"
+                            id="date_at_child_found"
+                            aria-label="Enter Date"
+                            formControlName="date_at_child_found"
+                          />
+                          <app-form-error [field]="form17_ghijklmn.controls.date_at_child_found"></app-form-error>
+                        </div>
+                      </div> -->
+                  </div>
+                </div>
+              </div>
+              <!-- Immediate efforts made to trace family of the child -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                    L : Immediate efforts made to trace family of the child
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                  <div class="row mt-2">
+                    <div class="col-md-12 mb-3">
+                      <div class="form-group">
+                        <label for="specifyDetails" class="form-label header-label"
+                          >Specify Details</label
+                        >
+                        <span class="text-danger">*</span>
+                        <textarea
+                          class="form-control"
+                          id="immediate_efforts_to_trace_family"
+                          placeholder="Enter Specify Details"
+                          rows="3"
+                          formControlName="immediate_efforts_to_trace_family"
+                        ></textarea>
+                        <app-form-error [field]="form17_ghijklmn.controls.immediate_efforts_to_trace_family"></app-form-error>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Medical treatment, if provided to the child -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                    M : Medical treatment, if provided to the child
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                    <div class="row my-2">
+                        <div class="col-md-2">
+                          <label class="form-label bold-heading">If Provided</label>
+                        </div>
+                        <div class="col-md-10">
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="agreeYes"
+                              value="1"
+                              formControlName="medical_treatment_provided"
+                            />
+                            <label class="form-check-label" for="agreeYes">Yes</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="agreeNo"
+                              value="0"
+                              formControlName="medical_treatment_provided"
+                            />
+                            <label class="form-check-label" for="agreeNo">No</label>
+                          </div>
+                          <app-form-error [field]="form17_ghijklmn.controls.medical_treatment_provided"></app-form-error>
+                        </div>
+                        <div class="col-md-12 my-3">
+                            <div class="form-group">
+                              <label for="specifyDetails" class="form-label header-label"
+                                >Specify Details</label
+                              >
+                              <span class="text-danger">*</span>
+                              <textarea
+                                class="form-control"
+                                id="specify_medical_details"
+                                placeholder="Enter Specify Details"
+                                rows="3"
+                                formControlName="specify_medical_details"
+                              ></textarea>
+                              <app-form-error [field]="form17_ghijklmn.controls.specify_medical_details"></app-form-error>
+                            </div>
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                              <label for="supportedDocument" class="form-label header-label">Supported Document
+                                @if(draft_details.medical_supported_document){
+                                  <a href="{{ draft_details.medical_supported_document }}" target="_blank" class=" ms-2">
+                                      <i class="fa fa-download me-1"></i>
+                                  </a>
+                                }
+                              </label>
+                              
+                              <input
+                                type="file"
+                                class="form-control"
+                                id="medical_supported_document"
+                                aria-label="Upload Photo"
+                                formControlName="medical_supported_document"
+                              />
+                              <app-form-error [field]="form17_ghijklmn.controls.medical_supported_document"></app-form-error>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+              </div>
+              <!-- Whether police have been informed -->
+              <div class="sub-heading-wrapper mt-2">
+                <div class="sub-header mb-2">
+                    N : Whether police have been informed
+                </div>
+                <hr class="horizontal-bar" />
+                <div class="sub-heading-wrapper mt-1">
+                    <div class="row my-2">
+                        <div class="col-md-2">
+                          <label class="form-label bold-heading">If Provided</label>
+                        </div>
+                        <div class="col-md-10">
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="agreeYes"
+                              value="1"
+                              formControlName="police_informed"
+                            />
+                            <label class="form-check-label" for="agreeYes">Yes</label>
+                          </div>
+                          <div class="form-check form-check-inline">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              id="agreeNo"
+                              value="0"
+                              formControlName="police_informed"
+                            />
+                            <label class="form-check-label" for="agreeNo">No</label>
+                          </div>
+                          <app-form-error [field]="form17_ghijklmn.controls.police_informed"></app-form-error>
+                        </div>
+                        <div class="col-md-12 my-3">
+                            <div class="form-group">
+                              <label for="specifyDetails" class="form-label header-label"
+                                >Specify Details</label
+                              >
+                              <span class="text-danger">*</span>
+                              <textarea
+                                class="form-control"
+                                id="specify_police_details"
+                                placeholder="Enter Specify Details"
+                                rows="3"
+                                formControlName="specify_police_details"
+                              ></textarea>
+                              <app-form-error [field]="form17_ghijklmn.controls.specify_police_details"></app-form-error>
+                            </div>
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <div class="form-group">
+                              <label for="supportedDocument" class="form-label header-label">Supported Document 
+                                @if(draft_details.police_supported_document){
+                                  <a href="{{ draft_details.police_supported_document }}" target="_blank" class=" ms-2">
+                                      <i class="fa fa-download me-1"></i>
+                                  </a>
+                                }
+                              </label>
+                              
+                              <input
+                                type="file"
+                                class="form-control"
+                                id="police_supported_document"
+                                aria-label="Upload Photo"
+                                formControlName="police_supported_document"
+                              />
+                              <app-form-error [field]="form17_ghijklmn.controls.police_supported_document"></app-form-error>
+                            </div>
+                          </div>
+                      </div>
+                </div>
+              </div>
+
+              <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+                <div *ngFor="let errorGroup of displayErrors">
+                  <strong>{{ errorGroup.step }}:</strong>
+                  <ul>
+                    <li *ngFor="let error of errorGroup.messages">{{ error }}</li>
+                  </ul>
+                </div>
+              </div>
+    
+              <div class="row">
+                <div class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3">
+                  <a routerLink="/portal/registration/form-ef/{{draftId}}">
+                    <button class="btn cancel-button-style">Back</button>
+                  </a>
+                  @if (!isFormSubmitInProgress) {
+                    <button type="submit"  class="btn save-next-btn-style">Save As Draft</button>
+                  } @else {
+                    <button type="button" disabled class="btn save-next-btn-style">
+                      Saving As Draft... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                    </button>
+                  }
+                  <button type="button" [disabled]="!isDraftSaved" (click)="onFinalSubmit()" class="btn save-next-btn-style">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+</section>

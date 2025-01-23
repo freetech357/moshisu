@@ -1,0 +1,17 @@
+#superadmin-sidebar-footer.sidebar-on {
+  margin-left: 250px;
+}
+
+#superadmin-sidebar-footer {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #FFF;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all .3s ease;
+  color: #5a5a5a;
+}

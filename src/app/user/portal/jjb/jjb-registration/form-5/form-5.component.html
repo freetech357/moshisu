@@ -1,0 +1,194 @@
+<section id="jjb-registration-form-5-component">
+    <div class="container">
+      <div class="card position-relative bg-white">
+        <div class="card-body">
+          <!-- Stepper Content -->
+          <div class="stepper d-flex justify-content-center mt-3">
+            <div class="step ">
+              <div class="circle">1</div>
+              <div class="label">Step 1</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">2</div>
+              <div class="label">Step 2</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle">3</div>
+              <div class="label">Step 3</div>
+            </div>
+            <div class="line"></div>
+            <div class="step ">
+              <div class="circle ">4</div>
+              <div class="label ">Step 4</div>
+            </div>
+            <div class="line"></div>
+            <div class="step active">
+              <div class="circle">5</div>
+              <div class="label">Step 5</div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <div class="card mt-3 position-relative bg-white">
+          <div class="card-body">
+            <form [formGroup]="form_5" (submit)="saveAsDraft()">
+            <!-- Place where the child was found -->
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                Q : Reason for Alleged Offence Such as Parental Neglect or Over Protection, Peer Group Influence etc.
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="sub-heading-wrapper mt-1">
+                <div class="row mt-2">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="reason_for_alleged_offence" class="form-label header-label"
+                        >Remarks</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="reason_for_alleged_offence"
+                        placeholder="Enter Remarks"
+                        rows="3"
+                        formControlName="reason_for_alleged_offence"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                R : Circumstances in Which the Child was Apprehended
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="sub-heading-wrapper mt-1">
+                <div class="row mt-2">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="circumstances_of_apprehension" class="form-label header-label"
+                        >Remarks</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="circumstances_of_apprehension"
+                        placeholder="Enter Remarks"
+                        rows="3"
+                        formControlName="circumstances_of_apprehension"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">S : Details of Articles Recovered From the Child</div>
+              <hr class="horizontal-bar" />
+              <div class="sub-heading-wrapper mt-1">
+                <div class="row mt-2">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="details_of_recovered_articles" class="form-label header-label"
+                        >Remarks</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="details_of_recovered_articles"
+                        placeholder="Enter Remarks"
+                        rows="3"
+                        formControlName="details_of_recovered_articles"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">
+                T : Alleged Role of the Child in the Offence
+              </div>
+              <hr class="horizontal-bar" />
+              <div class="sub-heading-wrapper mt-1">
+                <div class="row mt-2">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="alleged_role_in_offence" class="form-label header-label"
+                        >Remarks</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="alleged_role_in_offence"
+                        placeholder="Enter Remarks"
+                        rows="3"
+                        formControlName="alleged_role_in_offence"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+  
+            <div class="sub-heading-wrapper mt-2">
+              <div class="sub-header mb-2">U : Suggestions of Child Welfare Police Officer</div>
+              <hr class="horizontal-bar" />
+              <div class="sub-heading-wrapper">
+                <div class="row mt-2">
+                  <div class="col-md-12 mb-3">
+                    <div class="form-group">
+                      <label for="child_welfare_officer_suggestions" class="form-label header-label"
+                        >Remarks</label
+                      >
+                      <span class="text-danger">*</span>
+                      <textarea
+                        class="form-control"
+                        id="child_welfare_officer_suggestions"
+                        placeholder="Enter Remarks"
+                        rows="3"
+                        formControlName="child_welfare_officer_suggestions"
+                      ></textarea>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div *ngIf="displayErrors.length > 0" class="error-box mt-2">
+              <div *ngFor="let errorGroup of displayErrors">
+                <strong>{{ errorGroup.step }}:</strong>
+                <ul>
+                  <li *ngFor="let error of errorGroup.messages">{{ error }}</li>
+                </ul>
+              </div>
+            </div>
+  
+            <div class="row">
+              <div
+                class="col-md-12 d-flex align-items-center justify-content-center my-2 gap-3"
+              >
+              <a routerLink="/portal/jjb/jjb-registration/form-4/{{draftId}}">
+                <button class="btn cancel-button-style">Back</button>
+              </a>
+              @if (!isFormSubmitInProgress) {
+                <button type="submit"  class="btn save-next-btn-style">Save As Draft</button>
+              } @else {
+                <button type="button" disabled class="btn save-next-btn-style">
+                  Saving As Draft... <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                </button>
+              }
+              <button type="button" [disabled]="!isDraftSaved" (click)="onFinalSubmit()" class="btn save-next-btn-style">Submit</button>
+              </div>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
+</section>

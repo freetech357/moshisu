@@ -1,0 +1,23 @@
+.password-criteria {
+  background-color: #F3F4F6;
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.active-session-item {
+  border: 1px solid #dee2e6;
+  background-color: #F3F4F6;
+  padding: 1rem !important;
+  margin-bottom: 0.7rem;
+  border-radius: 5px;
+}
+
+.device-icon {
+  background-color: #ffffff;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+}

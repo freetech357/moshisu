@@ -1,0 +1,138 @@
+<section id="superadmin-manage-user-list-component" class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-6 d-flex align-items-center">
+        <h1 class="page-title mb-0">Activity Logs</h1>
+      </div>
+    </div>
+    <div class="accordion mt-4" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+          <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+            aria-expanded="false" aria-controls="collapseOne">
+            Filter
+          </button>
+        </h2>
+        <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+          data-bs-parent="#accordionExample">
+          <div class="accordion-body">
+            <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+              <div class="row">
+                <div class="col-sm-6 col-md-3">
+                  <div class="form-group">
+                    <label class="form-label" for="role_id">User Role</label>
+                    <select id="role_id" formControlName="role_id" class="form-control form-select">
+                      <option value="">Select User Role</option>
+                      <option *ngFor="let userRole of userRoles" [value]="userRole.id">{{ (userRole.department_name) ? userRole.department_name + ': ' : '' }}{{ userRole.role_name }}</option>
+                    </select>
+                    <app-form-error [field]="searchForm.controls.role_id"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="form-group">
+                    <label class="form-label" for="ip_address">IP Address</label>
+                    <input type="text" id="ip_address" formControlName="ip_address" class="form-control">
+                    <app-form-error [field]="searchForm.controls.ip_address"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="form-group">
+                    <label class="form-label" for="module_id">Module</label>
+                    <select id="module_id" formControlName="module_id" class="form-control form-select">
+                      <option value="">Select Module</option>
+                      <option *ngFor="let module of modules" [value]="module.id">{{ module.name }}</option>
+                    </select>
+                    <app-form-error [field]="searchForm.controls.module_id"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="form-group">
+                    <label class="form-label" for="action_id">Action</label>
+                    <select id="action_id" formControlName="action_id" class="form-control form-select">
+                      <option value="">Select Action</option>
+                      <option *ngFor="let action of actions" [value]="action.id">{{ action.name }}</option>
+                    </select>
+                    <app-form-error [field]="searchForm.controls.action_id"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="form-group">
+                    <label class="form-label" for="date_from">Date From</label>
+                    <input type="date" id="date_from" formControlName="date_from" class="form-control">
+                    <app-form-error [field]="searchForm.controls.date_from"></app-form-error>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-3">
+                  <div class="form-group">
+                    <label class="form-label" for="date_to">Date To</label>
+                    <input type="date" id="date_to" formControlName="date_to" class="form-control">
+                    <app-form-error [field]="searchForm.controls.date_to"></app-form-error>
+                  </div>
+                </div>
+
+                <div class="col-12 mt-3">
+                  @if (!isFormSearchInProgress) {
+                  <button type="submit" class="btn btn-success"><i class="fa-solid fa-arrow-circle-right me-1"></i>
+                    Search</button>
+                  }@else{
+                  <button type="submit" class="btn btn-success"><i class="fa-solid fa-arrow-circle-right me-1"></i>
+                    Searching ...</button>
+                  }
+                  <button type="submit" class="btn btn-secondary mx-2" (click)="resetForm()"><i class="fa-solid fa-sync me-1"></i> Reset</button> 
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-3 w-100 ms-0" *ngIf="!isFormSearchInProgress">
+      <div>Showing {{ activityLogs.length }} of {{ total }} items</div>
+      <div style="overflow-x: auto;" class="p-0">
+        <table class="table table-bordered mt-3" aria-describedby="">
+          <thead>
+            <tr>
+              <th style="min-width: 70px">Sl No</th>
+              <th style="min-width: 180px">Date</th>
+              <th style="min-width: 200px">User</th>
+              <th style="min-width: 200px">User Role</th>
+              <th style="min-width: 150px">IP Address</th>
+              <th style="min-width: 150px">Module Name</th>
+              <th style="min-width: 150px">Action Name</th>
+              <th style="min-width: 120px">Device Info</th>
+              <th style="min-width: 120px">Browser Info</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (item of activityLogs; track $index) {
+            <tr>
+              <td class="text-center">{{ $index + 1 }}</td>
+              <td class="text-center">{{ dateService.formatDate(item.created_at) }}</td>
+              <td class="text-center">{{ item.user.first_name }} {{ item.user.last_name }}</td>
+              <td class="text-center">{{ item.user_role.role_name }}</td>
+              <td class="text-center">{{ item.ip_address }}</td>
+              <td class="text-center">{{ item.module.name }}</td>
+              <td class="text-center">{{ item.action.name }}</td>
+              <td class="text-center">
+                {{ (item.device_info) ? item.device_info.os.family + ' ' + item.device_info.os.major : '' }}</td>
+              <td class="text-center">
+                {{ (item.device_info) ? item.device_info.family + ' v' + item.device_info.major : '' }}</td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+      @if (activityLogs.length > 0 && !this.hideLoadMoreBtn) {
+      <div class="text-center mt-3">
+        <button *ngIf="!isLoadMoreInProgress" class="btn btn-success" (click)="loadMoreActivityLogs()"><i
+            class="fa-solid fa-arrow-circle-down me-1"></i> Load More</button>
+        <button *ngIf="isLoadMoreInProgress" class="btn btn-success" disabled>Loading.. <i
+            class="fa-solid fa-spinner fa-spin ms-1"></i></button>
+      </div>
+      }
+    </div>
+    <div class="mt-3 w-100 ms-0 text-center" *ngIf="isFormSearchInProgress">
+      Loading.. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+    </div>
+  </div>
+</section>

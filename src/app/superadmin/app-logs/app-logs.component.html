@@ -1,0 +1,150 @@
+<section id="superadmin-app-logs-form-component" class="page-content" *ngIf="!isPassEnter">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex align-items-center">
+            <h1 class="page-title mb-0">App Logs</h1>
+        </div>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-sm-6 col-md-12">
+            <form [formGroup]="appPassForm" (submit)="appPassSubmit()">
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6">
+                  <label class="form-label" for="pass">Enter Pass <span class="text-danger">*</span></label>
+                  <input type="text" id="pass" formControlName="pass" class="form-control">
+                  <app-form-error [field]="appPassForm.controls.pass"></app-form-error>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6">                  
+                  @if (!isFormSubmitInProgress) {
+                    <button type="submit" class="btn btn-success">Proceed <i class="fa-solid fa-arrow-circle-right me-1"></i> </button>
+                  } @else {
+                    <button type="button" disabled class="btn btn-success">
+                      Processing .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                    </button>
+                  }
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+
+<section id="superadmin-app-logs-component" class="page-content" *ngIf="isPassEnter">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex align-items-center">
+          <h1 class="page-title mb-0">App Logs</h1>
+        </div>
+      </div>
+      <div class="accordion mt-4" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne"
+              aria-expanded="false" aria-controls="collapseOne">
+              Filter
+            </button>
+          </h2>
+          <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne"
+            data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <form [formGroup]="searchForm" (ngSubmit)="submitForm()">
+                <div class="row">
+                  <div class="col-sm-6 col-md-3">
+                    <div class="form-group">
+                      <label class="form-label" for="level">Levels</label>
+                      <select id="level" formControlName="level" class="form-control form-select">
+                        <option value="">Select level</option>
+                        <option value="1">Error</option>
+                        <option value="2">Warning</option>
+                        <option value="3">Info</option>
+                        <option value="4">HTTP</option>
+                        <option value="5">Verbose</option>
+                        <option value="6">Debug</option>
+                        <option value="7">Silly</option>
+                      </select>
+                      <app-form-error [field]="searchForm.controls.level"></app-form-error>
+                    </div>
+                  </div>
+  
+                  <div class="col-12 mt-3">
+                    @if (!isFormSearchInProgress) {
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-arrow-circle-right me-1"></i>
+                      Search</button>
+                    }@else{
+                    <button type="submit" class="btn btn-success"><i class="fa-solid fa-arrow-circle-right me-1"></i>
+                      Searching ...</button>
+                    }
+                    <button type="submit" class="btn btn-secondary mx-2" (click)="resetForm()"><i class="fa-solid fa-sync me-1"></i> Reset</button> 
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="mt-3 w-100 ms-0" *ngIf="!isFormSearchInProgress">
+        <div style="overflow-x: auto;" class="p-0">
+          <table class="table table-bordered mt-3" aria-describedby="">
+            <thead>
+              <tr>
+                <th style="min-width: 70px">Sl No</th>
+                <th style="min-width: 180px">Created At</th>
+                <th style="min-width: 100px">Level</th>
+                <th style="min-width: 100px">Name</th>
+                <th style="min-width: 100px">Message</th>
+                <th style="min-width: 200px">Stack</th>
+              </tr>
+            </thead>
+            <tbody>
+              @if (!isFormSearchInProgress) {
+                @if (appLogs && appLogs.length > 0) {
+                  @for (item of appLogs; track $index) {
+                    <tr>
+                      <td class="text-center">{{ $index + 1 }}</td>
+                      <td class="text-center">{{ dateService.formatDate(item.created_at) }}</td>
+                      <td class="fw-bold">
+                        @if(item.level == 1){
+                          <span class="text-danger"><i class="fas fa-times-circle"></i> Error</span>
+                        }@else if (item.level == 2){
+                          <span class="text-warning"><i class="fas fa-exclamation-triangle"></i> Warning</span>
+                        }@else if (item.level == 3){
+                          <span class="text-info"><i class="fas fa-info-circle"></i> Info</span>
+                        }@else if (item.level == 4){
+                          <span class="text-primary"><i class="fas fa-globe"></i> HTTP</span>
+                        }@else if (item.level == 5){
+                          <span class="text-success"><i class="fas fa-paragraph"></i> Verbose</span>
+                        }@else if (item.level == 6){
+                          <span class="text-secondary"><i class="fas fa-bug"></i> Debug</span>
+                        }@else if (item.level == 7){
+                          <span class="text-muted"><i class="fas fa-infinity"></i> Silly</span>
+                        }                    
+                      </td>                
+                      <td>{{ item.name }}</td>
+                      <td>{{ item.message }}</td>
+                      <td>{{ item.stack }}</td>
+                    </tr>
+                  }
+                }@else{
+                  <tr class="text-center">
+                      <td colspan="6">No data available</td>
+                  </tr>
+                }
+              } @else {
+                <tr class="text-center">
+                  <td colspan="6">Loading.. <i class="fa-solid fa-spinner fa-spin ms-1"></i></td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>        
+      </div>
+     
+    </div>
+  </section>
+  

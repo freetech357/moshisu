@@ -1,0 +1,163 @@
+<!-- <section id="superadmin-login-component">
+  <div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-12 col-md-6 left-pane">
+            <img src="/assets/images/icons/DL_Login_BG.png" alt="Description" class="img-fluid">
+        </div>
+        <div class="col-12 col-md-6 right-pane">
+            <div class="card">
+                <div class="card-body">
+                    <div class="text-center">
+                        <img src="/assets/images/icons/DL_Logo.png" alt="Center Image" class="img-fluid" width="250px">
+                    </div>
+                    <form [formGroup]="loginForm" (submit)="submitForm()" class="w-100 p-3">
+                        <div class="text-center">
+                            <span style="font-size: 1.2rem; font-weight: 700;">Login to your account</span>
+                        </div>
+                        <div class="form-group mb-1 mt-3">
+                            <label for="username" class="form-label"
+                                style="font-size: 0.9rem; font-weight:500;">Username /Regd. No.</label><span
+                                class="text-danger">*</span>
+                            <input type="text" id="username" formControlName="username" class="form-control"
+                                placeholder="Enter Username/Regd. No.">
+                                <app-form-error [field]="loginForm.controls.username"></app-form-error>
+                        </div>
+                        <div class="form-group mb-2">
+                            <label for="password" class="form-label" style="font-size: 0.9rem; font-weight:500;">Password</label><span class="text-danger">*</span>    
+                                <div class="input-group">                                  
+                                  <input type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" id="password" class="form-control" placeholder="Enter Password">
+                                  <div class="input-group-prepend">
+                                    <span class="view-icon input-group-text view_ps" (click)="togglePasswordVisibility()">
+                                      <i class="fa" [ngClass]="{'fa-eye': hidePassword, 'fa-eye-slash': !hidePassword}"></i>
+                                    </span>
+                                  </div>                                   
+                              </div>
+                            <app-form-error [field]="loginForm.controls.password"></app-form-error>
+                        </div>
+
+                        @if (!isFormSubmitInProgress){
+                          <button type="submit" class="btn bg-btn w-100" style="padding: 10px 20px;">Log In</button>
+                        } @else {
+                          <button type="button" disabled class="btn bg-btn w-100" style="padding: 10px 20px;">Logging in.. <i class="fa-solid fa-spinner fa-spin ms-1"></i></button>
+
+                        }
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>
+</section>
+ -->
+
+ <section id="superadmin-login-component">
+  <div class="container-fluid h-100 g-0">
+    <div class="row h-100 g-0">
+      <div class="col-12 col-md-6 left-pane">
+        <img
+          src="/assets/images/icons/MS_login_bg.jpg"
+          alt="Description"
+          class="img-fluid"
+        />
+      </div>
+      <div class="col-12 col-md-6 right-pane">
+        <div class="card">
+          <div class="card-body">
+            <div class="text-center">
+              <img
+                src="/assets/images/icons/MS_logo_Black.png"
+                alt="Center Image"
+                class="img-fluid w-auto"
+              />
+            </div>
+            <form [formGroup]="loginForm" (submit)="submitForm()" class="w-100 p-3">
+              <div class="text-center">
+                <span style="font-size: 1.2rem; font-weight: 700"
+                  >Login to your account</span
+                >
+              </div>
+              <div class="mb-1 mt-3">
+                <label
+                  for="username"
+                  class="form-label"
+                  style="font-size: 0.9rem; font-weight: 500"
+                  >Username Id</label
+                ><span class="text-danger">*</span>
+                <input
+                  type="text"
+                  id="username"
+                  class="form-control"
+                  placeholder="Enter Username/Regd. No."
+                  formControlName="username"
+                />
+                <app-form-error [field]="loginForm.controls.username"></app-form-error>
+              </div>
+              <div class="mb-2">
+                <label for="password" class="form-label" style="font-size: 0.9rem; font-weight:500;">Password</label><span class="text-danger">*</span>    
+                  <div class="input-group">                                  
+                    <input type="{{ hidePassword ? 'password' : 'text' }}" formControlName="password" id="password" class="form-control" placeholder="Enter Password">
+                    <div class="input-group-prepend">
+                      <span class="view-icon input-group-text view_ps" (click)="togglePasswordVisibility()">
+                        <i class="fa" [ngClass]="{'fa-eye': hidePassword, 'fa-eye-slash': !hidePassword}"></i>
+                      </span>
+                    </div>                                   
+                  </div>
+                <app-form-error [field]="loginForm.controls.password"></app-form-error>     
+              </div>
+              <!-- <div class="mb-2">
+                <div class="captcha-container">
+                  <input
+                    type="text"
+                    id="captcha"
+                    class="form-control"
+                    placeholder="Enter captcha"
+                  />
+                  <img
+                    src="https://via.placeholder.com/100x40?text=dsbdt2"
+                    alt="captcha"
+                    class="ms-2"
+                  />
+                </div>
+              </div> -->
+              @if (!isFormSubmitInProgress){
+                <button
+                type="submit"
+                class="btn button-bg w-100"
+                style="padding: 10px 20px"
+              >
+                Log In
+              </button>
+              } @else {
+                <button
+                type="button" disabled
+                class="btn button-bg w-100"
+                style="padding: 10px 20px"
+              >
+                Logging In.. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+              </button>
+              }
+              
+              <!-- <div
+                class="d-flex justify-content-between align-items-center mt-2"
+              >
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    id="rememberMe"
+                    class="form-check-input"
+                  />
+                  <label for="rememberMe" class="form-check-label"
+                    >Remember me</label
+                  >
+                </div>
+                <a href="#" class="text-primary" style="font-size: 0.9rem"
+                  >Forgot Password?</a
+                >
+              </div> -->
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ </section>

@@ -1,0 +1,64 @@
+<section id="department-login-component">
+  <div class="h-100">
+    <div class="row h-100 w-100 ms-0">
+      <div class="col-12 col-lg-6 bg_img_auth" style="background-color: #ffffff;">
+        <div class="h-100 d-flex align-items-center justify-content-center">
+          <div class="auth-form">
+            <div class="row">
+              <div class="col-12 col-lg-12">
+                <h4><strong>Department Login</strong></h4>
+                <p style="font-size: 0.85rem;">Welcome back. Please enter your login details below to access your account. Rest assured, we prioritize the security of your data. Your information is encrypted and protected.</p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 col-lg-12 mx-auto">
+                <form [formGroup]="loginForm" class="mt-4" (submit)="submitForm()">
+                  <div class="form-group mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <div class="input-group">
+                      <input type="email" name="email" id="email" formControlName="email" class="form-control" placeholder="Enter email address">
+                    </div>
+                    <app-form-error [field]="loginForm.controls.email"></app-form-error>
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="password" class="form-label">Password</label>
+                    <div class="input-group">
+                      <!-- <input type="password" name="password" id="password" formControlName="password" class="form-control" placeholder="Enter password"> -->
+                      <input type="{{ hidePassword ? 'password' : 'text' }}" name="password" id="password" formControlName="password" class="form-control" placeholder="Enter password">
+                      <div class="input-group-prepend">
+                        <span class="view-icon input-group-text view_ps" (click)="togglePasswordVisibility()">
+                          <i class="fa" [ngClass]="{'fa-eye': hidePassword, 'fa-eye-slash': !hidePassword}"></i>
+                        </span>
+                      </div>
+                    </div>
+                    <app-form-error [field]="loginForm.controls.password"></app-form-error>
+                  </div>
+                  <div>
+                    @if (!isFormSubmitInProgress) {
+                      <button type="submit" class="btn w-100 login-btn bg-btn">
+                        <i class="fa-solid fa-sign-in-alt me-1"></i> Login
+                      </button>
+                    } @else {
+                      <button type="button" disabled class="btn w-100 login-btn bg-btn">
+                        Logging in.. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                      </button>
+                    }
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-lg-6 px-lg-0">
+        <div class="logo_top text-center">
+
+        </div>
+        <div class="login-container-left">
+          <img src="/assets/images/icons/Login_SY.png" alt="" class="img-fluid vh-100 w-100 object-cover">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

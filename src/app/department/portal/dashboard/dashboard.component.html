@@ -1,0 +1,41 @@
+<div class="container-fluid">
+  <!-- dashboard.component.html -->
+  <div class="row">
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+      <div class="card h-100 position-relative" style="background-color:#023e8a; color: #ffffff; font-weight:700;">
+        <div class="card-body p-4">
+          <h5 class="card-title" style="font-size: 20px; font-weight:700;">{{ (dashboardStats && dashboardStats.total_applications) ? dashboardStats.total_applications : 0 }}</h5>
+          <p class="card-text" style="font-size: 14px;">Total No. of Applications Received</p>
+          <!-- <i class="fas fa-database position-absolute bottom-0 end-0 p-2"></i> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+      <div class="card  h-100 position-relative" style="background-color:#f35b04; color: #ffffff; font-weight:700;">
+        <div class="card-body p-4">
+          <h5 class="card-title" style="font-size: 20px; font-weight:700;">{{ (dashboardStats && dashboardStats.total_pending_applications) ? dashboardStats.total_pending_applications : 0 }}</h5>
+          <p class="card-text" style="font-size: 14px;">Total No. of Applications Under Process</p>
+          <!-- <i class="fas fa-spinner position-absolute bottom-0 end-0 p-2"></i> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+      <div class="card  h-100 position-relative" style="background-color:#38b000; color: #ffffff; font-weight:700;">
+        <div class="card-body p-4">
+          <h5 class="card-title" style="font-size: 20px; font-weight:700;">{{ (dashboardStats && dashboardStats.total_approved_applications) ? dashboardStats.total_approved_applications : 0 }}</h5>
+          <p class="card-text" style="font-size: 14px;">Total No. of Applications Approved</p>
+          <!-- <i class="fas fa-check-circle position-absolute bottom-0 end-0 p-2"></i> -->
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-3 mb-3">
+      <div class="card  h-100 position-relative" style="background-color:#d90429; color: #ffffff; font-weight:700;">
+        <div class="card-body p-4">
+          <h5 class="card-title" style="font-size: 20px; font-weight:700;">{{ (dashboardStats && dashboardStats.total_rejected_applications) ? dashboardStats.total_rejected_applications : 0 }}</h5>
+          <p class="card-text" style="font-size: 14px;">Total No. of Applications Rejected</p>
+          <!-- <i class="fas fa-times-circle position-absolute bottom-0 end-0 p-2"></i> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

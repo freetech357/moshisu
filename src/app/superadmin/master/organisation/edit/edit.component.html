@@ -1,0 +1,58 @@
+<section id="superadmin-organisation-edit-component" class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex align-items-center">
+            <h1 class="page-title mb-0">Edit Organisation</h1>
+        </div>
+        <div class="col-6 col-md-6 text-end">
+            <a routerLink="/superadmin/portal/master/organisation">
+                <button class="btn btn-dark"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+            </a>
+        </div>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-sm-6 col-md-12">
+            <form [formGroup]="organisationFormEdit" (submit)="organisationEdit()">
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                    <label class="form-label" for="user">User Level<span class="text-danger">*</span></label>
+                    <select id="user" formControlName="user" class="form-control form-select">
+                        <option value="">Select User Level</option>
+                        <option value="1">State User</option>
+                        <option value="2">District User</option>
+                    </select>
+                    <app-form-error [field]="organisationFormEdit.controls.user"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                  <label class="form-label" for="organisation_name">Organisation Name <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="organisation_name" id="organisation_name" class="form-control" placeholder="Enter Organisation Name">
+                  <app-form-error [field]="organisationFormEdit.controls.organisation_name"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                    <label class="form-label" for="status">Status <span class="text-danger">*</span></label>
+                    <select id="status" formControlName="status" class="form-control form-select">
+                        <option value="">Select Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                    <app-form-error [field]="organisationFormEdit.controls.status"></app-form-error>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6">
+                  @if (!isFormSubmitInProgress) {
+                    <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Submit</button>
+                  } @else {
+                    <button type="button" disabled class="btn bg-btn">
+                      Submitting .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                    </button>
+                  }
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

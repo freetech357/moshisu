@@ -1,0 +1,49 @@
+<section id="superadmin-state-add-component" class="page-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-6 d-flex align-items-center">
+          <h1 class="page-title mb-0">Add State</h1>
+      </div>
+      <div class="col-6 col-md-6 text-end">
+          <a routerLink="/superadmin/portal/master/state">
+              <button class="btn btn-dark"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+          </a>
+      </div>
+    </div>
+    <div class="form-content">
+      <div class="row">
+        <div class="col-sm-6 col-md-12">
+          <form [formGroup]="stateForm" (submit)="stateSubmit()">
+            <div class="row mb-3">
+              <div class="col-sm-6 col-md-6">
+                <label class="form-label" for="state_name">State Name <span class="text-danger">*</span></label>
+                <input type="text" id="state_name" formControlName="state_name" class="form-control" placeholder="Enter State">
+                <app-form-error [field]="stateForm.controls.state_name"></app-form-error>
+              </div>
+              <div class="col-sm-6 col-md-6">
+                <label class="form-label" for="state_status">Status <span class="text-danger">*</span></label>
+                  <select id="state_status" formControlName="state_status" class="form-control form-select">
+                      <option value="">Select Status</option>
+                      <option value="1">Active</option>
+                      <option value="0">Inactive</option>
+                  </select>
+                  <app-form-error [field]="stateForm.controls.state_status"></app-form-error>
+              </div>
+            </div>
+            <div class="row mb-3">
+              <div class="col-sm-6 col-md-6">                  
+                @if (!isFormSubmitInProgress) {
+                  <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Submit</button>
+                } @else {
+                  <button type="button" disabled class="btn bg-btn">
+                    Submitting .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                  </button>
+                }
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

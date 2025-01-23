@@ -1,0 +1,37 @@
+/* .icon-master {
+  width: 64px;
+}
+
+.master-cards .col-12 {
+  margin-bottom: 1.5rem;
+}
+
+.master-cards .card {
+  border: 0;
+  box-shadow: var(--bs-box-shadow-sm) !important;
+} */
+
+.card-custom {
+            background: linear-gradient(145deg, #e67e22, #d35400);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-custom .card-body {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .card-custom .icon {
+            font-size: 2rem;
+            color: #ffdcb2;
+        }
+
+        .small-text {
+            font-size: 0.875rem;
+            color: #ffe0bd;
+        }

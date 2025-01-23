@@ -1,0 +1,107 @@
+<section id="superadmin-master-block-list-component" class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex align-items-center">
+                <h1 class="page-title mb-0">Block</h1>
+            </div>
+            <div class="col-6 col-md-6 text-end">
+                <a routerLink="/superadmin/portal/master">
+                    <button class="btn btn-dark"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+                </a>
+                <a routerLink="/superadmin/portal/master/block/add" class="ms-1">
+                    <button class="btn  bg-btn"><i class="fa-solid fa-plus me-1"></i> Add Block</button>
+                </a>
+            </div>
+        </div>
+
+
+            <div class="accordion mt-4" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                      Filter
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <form [formGroup]="searchForm" (ngSubmit)="onSearch()">
+                            <div class="row">
+                              <div class="col-sm-6 col-md-4">
+                                <label class="form-label" for="state">Select State</label>
+                                <select id="state" formControlName="state" class="form-control form-select" (change)="onStateChange()">
+                                  <option value="">Select State</option>
+                                  <option value="19">Odisha</option>
+                                  <!-- <option *ngFor="let state of states" [value]="state.id">{{ state.state_name }}</option> -->
+                                </select>
+                                <app-form-error [field]="searchForm.controls.state"></app-form-error>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                <label class="form-label" for="district">Select District</label>
+                                <select id="district" formControlName="district" class="form-control form-select">
+                                  <option value="">Select District</option>
+                                  <option *ngFor="let district of districts" [value]="district.id">{{ district.district_name }}</option>
+                                </select>
+                                <app-form-error [field]="searchForm.controls.district"></app-form-error>
+                              </div>
+                              <div class="col-sm-6 col-md-4">
+                                <label class="form-label" for="status">Status</label>
+                                <select id="status" formControlName="status" class="form-control form-select">
+                                  <option value="">Select Status</option>
+                                  <option value="1">Active</option>
+                                  <option value="0">InActive</option>
+                                </select>
+                                <app-form-error [field]="searchForm.controls.status"></app-form-error>
+                              </div>
+                              <div class="col-sm-6 col-md-6" style="margin-top: 30px;">
+                                @if (!isFormSearchInProgress) {
+                                    <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Search</button>
+                                }@else{
+                                    <button type="submit" disabled class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Searching ...</button>
+                                }
+                                <button type="reset" class="btn cancel-btn mx-2"><i class="fa-solid fa-sync me-1"></i> Reset</button>
+                              </div>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+        </div>
+        <div class="row mt-4 w-100 ms-0">
+          <div *ngIf="!isFormSearchInProgress">
+              <table class="table table-bordered">
+                  <thead>
+                      <tr>
+                        <th style="width: 50px;">Sl No</th>
+                        <th style="width: 150px;">Block Name</th>
+                        <th style="width: 150px;">District Name</th>
+                        <th style="width: 150px;">State Name</th>
+                        <th style="width: 100px;">Status</th>
+                        <th style="width: 100px;">Action</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let block of blocks | paginate: { itemsPerPage: 10, currentPage: page }; let i = index" class="text-center">
+                          <td>{{ i + 1 + (page - 1) * 10 }}</td>
+                          <td>{{ block.blockname }}</td>
+                          <td>{{ block.district_name }}</td>
+                          <td>{{ block.state_name }}</td>
+                          <td [ngClass]="{'text-success': block.status == '1', 'text-danger': block.status != '1'}">
+                              {{ block.status == '1' ? 'Active' : 'Inactive' }}
+                          </td>
+                          <td class="text-center">
+                              <a routerLink="/superadmin/portal/master/block/edit/{{ block.id }}" class="btn btn-sm btn-dark"><i class="fas fa-edit"></i></a>
+                          </td>
+                      </tr>
+                      <tr *ngIf="blocks.length === 0">
+                          <td colspan="6" class="text-center">No data available</td>
+                      </tr>
+                  </tbody>
+              </table>
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+          </div>
+          <div *ngIf="isFormSearchInProgress" class="text-center text-muted">
+              Loading.. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+          </div>
+      </div>
+    </div>
+</section>

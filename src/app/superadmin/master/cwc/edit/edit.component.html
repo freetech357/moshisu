@@ -1,0 +1,70 @@
+<section id="superadmin-cwc-edit-component" class="page-content">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 col-md-6 d-flex align-items-center">
+            <h1 class="page-title mb-0">Edit CWC</h1>
+        </div>
+        <div class="col-6 col-md-6 text-end">
+            <a routerLink="/superadmin/portal/master/cwc">
+                <button class="btn btn-dark"><i class="fa-solid fa-arrow-left me-1"></i> Back</button>
+            </a>
+        </div>
+      </div>
+      <div class="form-content">
+        <div class="row">
+          <div class="col-sm-6 col-md-12">
+            <form [formGroup]="cwcFormEdit" (submit)="cwcEdit()">
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                  <label class="form-label" for="state">State <span class="text-danger">*</span></label>
+                  <select formControlName="state" id="state" class="form-control form-select" (change)="onStateChange()">
+                      <option value="">Select State</option>
+                      <option value="19">Odisha</option>
+                      <!-- @for (state of states; track state.id) {
+                      <option value="{{ state.id }}">{{ state.state_name }}</option>
+                      } -->
+                  </select>
+                  <app-form-error [field]="cwcFormEdit.controls.state"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                    <label class="form-label" for="district">District <span class="text-danger">*</span></label>
+                    <select formControlName="district" id="district" class="form-control form-select">
+                        <option value="">Select District</option>
+                        @for (district of districts; track district.id) {
+                        <option value="{{ district.id }}">{{ district.district_name }}</option>
+                        }
+                    </select>
+                    <app-form-error [field]="cwcFormEdit.controls.district"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                  <label class="form-label" for="cwc_name">CWC Name <span class="text-danger">*</span></label>
+                  <input type="text" formControlName="cwc_name" id="cwc_name" class="form-control" placeholder="Enter Block">
+                  <app-form-error [field]="cwcFormEdit.controls.cwc_name"></app-form-error>
+                </div>
+                <div class="col-sm-6 col-md-6 col-lg-4 form-group">
+                    <label class="form-label" for="status">Status <span class="text-danger">*</span></label>
+                    <select id="status" formControlName="status" class="form-control form-select">
+                        <option value="">Select Status</option>
+                        <option value="1">Active</option>
+                        <option value="0">Inactive</option>
+                    </select>
+                    <app-form-error [field]="cwcFormEdit.controls.status"></app-form-error>
+                </div>
+              </div>
+              <div class="row mb-3">
+                <div class="col-sm-6 col-md-6">
+                  @if (!isFormSubmitInProgress) {
+                    <button type="submit" class="btn bg-btn"><i class="fa-solid fa-arrow-circle-right me-1"></i> Submit</button>
+                  } @else {
+                    <button type="button" disabled class="btn bg-btn">
+                      Submitting .. <i class="fa-solid fa-spinner fa-spin ms-1"></i>
+                    </button>
+                  }
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>

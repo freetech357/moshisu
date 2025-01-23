@@ -1,0 +1,105 @@
+<section id="superadmin-dashboard-component" class="page-content">
+ <div class="container-fluid">
+  <div class="card">
+    <div class="card-body p-4">
+        <h4>Master Management</h4>
+        <div class="row row-cols-1 row-cols-md-4 g-4">
+          <!-- <div class="col">
+            <a class="card card-custom" routerLink="/superadmin/portal/master">
+                <div class="card-body">
+                    <div>
+                        <h5 class="small-text">Country</h5>
+                        <h2>India</h2>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                </div>
+            </a>
+          </div> -->
+
+          <div class="col">
+            <a class="card card-custom" routerLink="/superadmin/portal/master/state">
+                <div class="card-body">
+                    <div>
+                        <h5 class="small-text">States/UTs</h5>
+                        <h2>{{ masterStats.state_count }}</h2>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                </div>
+            </a>
+          </div>
+            
+            <div class="col">
+              <a class="card card-custom" routerLink="/superadmin/portal/master/district">
+                  <div class="card-body">
+                      <div>
+                          <h5 class="small-text">Districts</h5>
+                          <h2>{{ masterStats.district_count }}</h2>
+                      </div>
+                      <div class="icon">
+                          <i class="fas fa-map"></i>
+                      </div>
+                  </div>
+              </a>               
+            </div>
+            <div class="col">
+                <a class="card card-custom" routerLink="/superadmin/portal/master/block">
+                    <div class="card-body">
+                        <div>
+                            <h5 class="small-text">Blocks/ULBs</h5>
+                            <h2>{{ masterStats.block_count }}</h2>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col">
+                <div class="card card-custom">
+                    <a class="card-body" routerLink="/superadmin/portal/master/cwc">
+                        <div>
+                            <h5 class="small-text">CWC</h5>
+                            <h2>{{ masterStats.cwc_count }}</h2>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card card-custom">
+                    <a class="card-body" routerLink="/superadmin/portal/master/organisation">
+                        <div>
+                            <h5 class="small-text">Organisation</h5>
+                            <h2>{{ masterStats.organization_count }}</h2>
+                        </div>
+                        <div class="icon">
+                            <i class="fas fa-clipboard-list"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+              <a class="card card-custom" routerLink="/superadmin/portal/master/jjb">
+                  <div class="card-body">
+                      <div>
+                          <h5 class="small-text">JJB</h5>
+                          <h2>{{ masterStats.jjb_count }}</h2>
+                      </div>
+                      <div class="icon">
+                          <i class="fas fa-balance-scale"></i>
+                      </div>
+                  </div>
+              </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

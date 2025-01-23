@@ -1,0 +1,72 @@
+<section id="superadmin-manage-user-list-component" class="page-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-md-6 d-flex align-items-center">
+                <h1 class="page-title mb-0">Manage User</h1>
+            </div>
+            <div class="col-6 col-md-6 text-end">
+                @if(authService.userDetail?.role?.id == 5){
+                    <a routerLink="/portal/manage-users/add">
+                        <button class="btn bg-btn"><i class="fa-solid fa-plus me-1"></i> Add User</button>
+                    </a>
+                }@else {
+                    <a routerLink="/superadmin/portal/manage-users/add">
+                        <button class="btn bg-btn"><i class="fa-solid fa-plus me-1"></i> Add User</button>
+                    </a>
+                }
+                
+            </div>
+        </div>
+        <div class="row mt-4 w-100 ms-0">
+            <table class="table table-bordered" aria-describedby="">
+                <thead>
+                    <tr>
+                        <th style="width: 50px">Sl No</th>
+                        <th style="width: 100px">User</th>
+                        <th style="width: 100px">User Level</th>
+                        <th style="width: 100px">Organization </th>
+                        <th style="width: 100px">Reporting To</th>
+                        <th style="width: 100px">Status</th>
+                        <th style="width: 100px">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (users && users.length > 0) {
+                        @for (user of users; track user.id; let i = $index) {
+                            <tr class="text-center">
+                                <td class="text-center">{{ i + 1 }}</td>
+                                <td>{{ user.name }}</td>
+                                @if (user.user_level == 1) {
+                                    <td>State</td>
+                                } @else {
+                                    <td>District</td>
+                                }
+                                <td>{{ user.org_name }}</td>
+                                <td>{{ user.reporting_to_role_name }}</td>
+                                @if (user.is_active == true) {
+                                    <td>Active</td>
+                                }@else {
+                                    <td>Inactive</td>
+                                }
+                                <td class="text-center">
+                                    @if(user.id !=1){
+                                        @if(authService.userDetail?.role?.id == 5){
+                                            <a routerLink="/portal/manage-users/edit/{{ user.id }}" class="btn btn-sm btn-dark"><i class="fas fa-edit"></i></a>
+                                        }@else {
+                                            <a routerLink="/superadmin/portal/manage-users/edit/{{ user.id }}" class="btn btn-sm btn-dark"><i class="fas fa-edit"></i></a>
+                                        }
+                                    }                                    
+                                </td>
+                            </tr>
+                        }
+
+                    }@else {
+                        <tr>
+                            <td colspan="8" class="text-center">No data available</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>

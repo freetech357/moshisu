@@ -13,6 +13,7 @@ import { Form17EfComponent } from './form-17-ef/form-17-ef.component';
 import { Form17GhijklmnComponent } from './form-17-ghijklmn/form-17-ghijklmn.component';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NavigationComponent } from './navigation/navigation.component';
+import { CustodyComponent } from './custody/custody.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { NavigationComponent } from './navigation/navigation.component';
     Form17DComponent,
     Form17EfComponent,
     Form17GhijklmnComponent,
-    NavigationComponent
+    NavigationComponent,
+    CustodyComponent
   ],
   imports: [
     CommonModule,

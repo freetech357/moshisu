@@ -1,0 +1,234 @@
+<div class="card m-2">
+    <div class="card-body text-center">
+        <div class="card-title ">
+            <div class="header-container">
+                <div class="header-title">ମୋ ଶିଶୁ</div>
+                <p class="header-subtitle">An Initiative by Government of Odisha</p>
+                <p class="header-subtitle-secondary">Under Integrated Child Development Services Scheme</p>
+            </div>              
+            <h3>Form - 2</h3>
+            <p>[Rules 8(7)]</p>
+        </div>
+        <h4>Undertaking by the or guardian or fit person given interim custody pending inquiry</h4>
+    </div>
+    <hr/>
+    <form [formGroup]="formData" (ngSubmit)="onSubmit()">
+        <div class="card-body">
+            <div class="card-title">
+                <h6 class="h6-dark">Parent/Guarding/Fit Person Details</h6>
+                
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <label for="name">Name <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" id="name" formControlName="name" placeholder="Name">
+                    <app-form-error [field]="formData.controls.name"></app-form-error>
+                </div>
+            </div>
+            <h6 class="mt-4 h6-org">Present Address</h6>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="name">State <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="state_id" (change)="onStateChange('present')">
+                        <option value="">Select State</option>
+                        <option *ngFor="let state of states" [value]="state.id">{{ state.state_name }}</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.state_id"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="name">District <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="district_id" (change)="onDistrictChange('present')">
+                        <option value="">Select District</option>
+                        <option *ngFor="let district of districts" [value]="district.id">{{ district.district_name }}</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.district_id"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="name">Block/ULB <span class="text-danger">*</span></label>
+                    <select class="form-control">
+                        <option value="">Select Block</option>
+                        <option *ngFor="let block of blocks" [value]="block.id">{{ block.blockname }}</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.district_id"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="name">Police station <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="policeStation">
+                        <option value="">Select Police station</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.policeStation"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="Ward">Village/Ward <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="village"  placeholder="Village/Ward">
+                    <app-form-error [field]="formData.controls.village"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="locality">Area/Locality <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="locality"  placeholder="Area/Locality">
+                    <app-form-error [field]="formData.controls.policeStation"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="street">Street/Building <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="building"  placeholder="Street/Building">
+                    <app-form-error [field]="formData.controls.building"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="postal_code">Postal Code <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="postalCode"  placeholder="Postal Code">
+                    <app-form-error [field]="formData.controls.postalCode"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="houseno">House No. <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="houseno"  placeholder="House No.">
+                    <app-form-error [field]="formData.controls.houseno"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="street">Street <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" formControlName="street"  placeholder="Street">
+                    <app-form-error [field]="formData.controls.street"></app-form-error>
+                </div>
+            </div>
+            <div class="checkbox-container">
+                <input type="checkbox" id="address-checkbox" (change)="onPresentAddressChange()">
+                <label for="address-checkbox" class="checkbox-label">
+                (Please (✔) if permanent address is same as present address)
+                </label>
+            </div> 
+            <h6 class="mt-4 h6-org">Permanent Address</h6>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="name">State <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="pstate_id" (change)="onStateChange('permanent')" [value]="formData.value.pstate_id">
+                        <option value="">Select State</option>
+                        <option *ngFor="let state of states" [value]="state.id">{{ state.state_name }}</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.pstate_id"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="name">District <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="pdistrict_id" (change)="onDistrictChange('permanent')" [value]="formData.value.pdistrict_id">
+                        <option value="">Select District</option>
+                        <option *ngFor="let district of pdistricts" [value]="district.id">{{ district.district_name }}</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.pdistrict_id"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="name">Block/ULB <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="pblock_id" [value]="formData.value.pblock_id">
+                        <option value="">Select Block</option>
+                        <option *ngFor="let block of pblocks" [value]="block.id">{{ block.blockname }}</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.pblock_id"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="name">Police station <span class="text-danger">*</span></label>
+                    <select class="form-control" formControlName="ppoliceStation">
+                        <option value="">Select Police station</option>
+                    </select>
+                    <app-form-error [field]="formData.controls.ppoliceStation"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="Ward">Village/Ward <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [value]="formData.value.pvillage" formControlName="pvillage"  placeholder="Village/Ward">
+                    <app-form-error [field]="formData.controls.pvillage"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="locality">Area/Locality <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [value]="formData.value.plocality" formControlName="plocality"  placeholder="Area/Locality">
+                    <app-form-error [field]="formData.controls.plocality"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="street">Street/Building <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [value]="formData.value.pbuilding" formControlName="pbuilding"  placeholder="Street/Building">
+                    <app-form-error [field]="formData.controls.pbuilding"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="postal_code">Postal Code <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [value]="formData.value.ppostalCode" formControlName="ppostalCode"  placeholder="Postal Code">
+                    <app-form-error [field]="formData.controls.ppostalCode"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="houseno">House No. <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [value]="formData.value.phouseno" formControlName="phouseno"  placeholder="House No.">
+                    <app-form-error [field]="formData.controls.phouseno"></app-form-error>
+                </div>
+                <div class="col-md-4">
+                    <label for="street">Street <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" [value]="formData.value.pstreet" formControlName="pstreet"  placeholder="Street">
+                    <app-form-error [field]="formData.controls.pstreet"></app-form-error>
+                </div>
+            </div>
+            
+            <div class="section-a">
+                <h2>Child Details</h2>
+                <div class="form-row">
+                    <div class="input-container">
+                        <label for="child-name">Name of the child <span class="text-danger">*</span></label>
+                        <input type="text" id="child-name" formControlName="childName" placeholder="Enter Name">
+                        <app-form-error [field]="formData.controls.childName"></app-form-error>
+                    </div>
+                    <div class="input-container">
+                        <label for="dob">Date of Birth</label>
+                        <input type="date" id="dob" formControlName="dob">
+                    </div>
+                    <div class="input-container">
+                        <label for="age">Age</label>
+                        <input type="number" id="age" placeholder="Age" formControlName="age">
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="input-container">
+                        <label for="jjb-name">JJB Name <span class="text-danger">*</span></label>
+                        <input type="text" id="jjb-name" formControlName="jjbName" placeholder="JJB Name">
+                        <app-form-error [field]="formData.controls.jjbName"></app-form-error>
+                    </div>
+                </div>
+                
+                <div class="checkbox-section">
+                    <h3>Terms & Conditions</h3>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="term-1">
+                        <label for="term-1" class="checkbox-label">
+                            That I have annexed true, correct, and authentic identification and address proof of myself.
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="term-2">
+                        <label for="term-2" class="checkbox-label">
+                            That I undertake to produce him/her before the Board as and when required.
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="term-3">
+                        <label for="term-3" class="checkbox-label">
+                            That I shall do my best for the welfare and education of the child as long as he/she remains in my charge.
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="term-4">
+                        <label for="term-4" class="checkbox-label">
+                            That in the event of his/her illness, he/she shall have proper medical attention.
+                        </label>
+                    </div>
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="term-5">
+                        <label for="term-5" class="checkbox-label">
+                            That I shall ensure the child will not be subjected to any form of abuse or exploitation.
+                        </label>
+                    </div>
+                </div>
+                <button type="button" [disabled]="isFormSubmitInProgress" *ngIf="isFormSubmitInProgress; else saveIcon"><i class="fa fa-spinner fa-spin"></i> Loading....</button>
+                <ng-template #saveIcon>
+                    <button type="submit" (click)="onSubmit()">
+                    <i class="fa fa-save"></i> Submit
+                    </button>
+                </ng-template>
+                
+            </div>          
+        </div>
+    </form>
+</div>

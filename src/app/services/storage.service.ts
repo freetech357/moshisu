@@ -15,7 +15,7 @@ export class StorageService {
 
   getItem(key: any) {
     const data: any = localStorage.getItem(this.storagePrefix + key);
-    return JSON.parse(data);
+    return data ? JSON.parse(data) : '';
   }
 
   deleteItem(key: any) {

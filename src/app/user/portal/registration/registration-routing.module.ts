@@ -7,6 +7,7 @@ import { Form17CComponent } from './form-17-c/form-17-c.component';
 import { Form17DComponent } from './form-17-d/form-17-d.component';
 import { Form17EfComponent } from './form-17-ef/form-17-ef.component';
 import { Form17GhijklmnComponent } from './form-17-ghijklmn/form-17-ghijklmn.component';
+import { CustodyComponent } from './custody/custody.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
   {
     path:'portal/registration/form-ghijklmn/:draftId',
     component:Form17GhijklmnComponent,
+    canActivate:[userAuthGuard]
+  },
+  {
+    path:'portal/jjb/custody-registration',
+    component:CustodyComponent,
     canActivate:[userAuthGuard]
   }
 ];

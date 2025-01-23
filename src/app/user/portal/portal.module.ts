@@ -10,7 +10,7 @@ import { CheckboxModule } from 'primeng/checkbox';
 
 @NgModule({
   declarations: [
-    DashboardComponent
+    DashboardComponent,
   ],
   imports: [
     CommonModule,

@@ -1,0 +1,27 @@
+@if(isAdminPortalActive) {
+  <app-superadmin-header></app-superadmin-header>
+  <app-superadmin-sidebar></app-superadmin-sidebar>
+  <main class="portal-on sidebar-on">
+    <router-outlet></router-outlet>
+  </main>
+  <app-superadmin-footer></app-superadmin-footer>
+} @else if (isUserPortalActive){
+  <app-user-header></app-user-header>
+  <app-user-sidebar></app-user-sidebar>
+  <main class="portal-on sidebar-on">
+    <router-outlet></router-outlet>
+  </main>
+  <app-user-footer></app-user-footer>
+} @else if (isDepartmentPortalActive){
+  <app-department-header></app-department-header>
+  <app-department-sidebar></app-department-sidebar>
+  <main class="portal-on sidebar-on">
+    <router-outlet></router-outlet>
+  </main>
+  <app-department-footer></app-department-footer>
+}
+@else {
+  <main>
+    <router-outlet></router-outlet>
+  </main>
+}

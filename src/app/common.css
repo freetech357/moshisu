@@ -1,1 +1,268 @@
+body,
+li {
+  /* font-family: "Nunito Sans", sans-serif; */
+  font-family: "Arimo", sans-serif;
+  font-size: 0.9rem;
+}
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span,
+strong,
+section,
+button,
+label,
+a {
+  font-family: "Arimo", sans-serif;
+  /* font-family: "Nunito Sans", sans-serif; */
+}
+
+a {
+  text-decoration: none !important;
+  font-size: 14px;
+  font-weight: 600 !important;
+}
+
+select[appreadonly],
+input[appreadonly] {
+  background-color: #e3e3e3;
+}
+
+.t_head th {
+  font-size: 18px;
+  font-weight: 700;
+  padding-left: 5px;
+}
+
+.form-control,
+.form-control::placeholder {
+  font-size: 0.9rem;
+}
+
+.btn,
+label,
+td,
+th {
+  font-size: 0.9rem;
+}
+
+th {
+  text-align: center;
+  background-color: #eaedf0;
+}
+
+.primary-nav {
+  background-color: rgba(2, 117, 172, 1) !important;
+}
+
+.bg-primary {
+  background-color: rgba(2, 117, 172, 1) !important;
+}
+
+.btn-primary {
+  /* background-color: rgba(2, 117, 172, 1) !important; */
+  /* border-color: rgba(2, 117, 172, 1) !important; */
+  background-image: linear-gradient(to top, #01376D 0%, #255F9A 100%) !important;
+  border-color: #366CA3 !important;
+}
+
+/* .btn-dark{
+  background: rgba(11, 39, 67, 1);
+} */
+.btn-success:not(.bg-success) {
+  background: linear-gradient(180deg, #027CB1 0%, #00468B 100%);
+}
+
+.btn-primary:hover {
+  background-color: rgba(2, 117, 172, 1) !important;
+  border-color: rgba(2, 117, 172, 1) !important;
+}
+
+.btn.bg-success {
+  background-color: #15803d !important;
+}
+
+.btn.bg-success:hover {
+  background-color: #166534 !important;
+}
+
+.btn-danger {
+  background-color: #dc2626 !important;
+}
+
+.btn-danger:hover {
+  background-color: #b91c1c !important;
+}
+
+main {
+  /* background-color: #f4f7fa; */
+  background-color: #f3f4f6;
+  min-height: calc(100dvh - 70px);
+  transition: all 0.3s ease;
+}
+
+main.portal-on {
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+main.sidebar-on {
+  margin-left: 250px;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.page-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+
+.page-content {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.form-label {
+  font-weight: 700;
+}
+
+.rounded-s {
+  border-top-left-radius: 0.25rem !important;
+  border-bottom-left-radius: 0.25rem !important;
+}
+
+.form-content,
+.content {
+  padding: 1.5rem;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-top: 1.5rem;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.form-group {
+  margin-bottom: 0.5rem;
+}
+
+.text-danger {
+  color: #c1121f !important;
+}
+
+.toast-message {
+  font-size: 0.9rem !important;
+  margin-bottom: 0 !important;
+}
+
+.toast-warning {
+  background-color: #fb5607 !important;
+  color: #fff !important;
+}
+
+.toast-error,
+.toast-danger {
+  background-color: #c1121f !important;
+  color: #fff !important;
+}
+
+.toast-success {
+  background-color: #007200 !important;
+  color: #fff !important;
+}
+
+.toast-info {
+  background-color: #0e9594 !important;
+  color: #fff !important;
+}
+
+.form-control.ng-invalid.ng-touched {
+  border: 2px solid #c1121f !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #eaedf0 !important;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #fff !important;
+}
+
+.sub-title {
+  font-size: 18px;
+}
+
+hr {
+  color: #a99a9a;
+  margin: 0.5rem 0 1rem 0;
+}
+
+table,
+td {
+  border: 1px solid #afaaaa;
+  border-collapse: collapse;
+  padding: 5px;
+}
+
+.accordion-body {
+  padding-bottom: 1.25rem;
+}
+
+
+.bg-primary {
+  background-color: #01458A !important;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.blinking {
+  animation: blink 1s infinite;
+}
+
+.btn-secondary {
+  background-image: linear-gradient(to top, #081C30 0%, #2D455D 100%) !important;
+  border-color: #2D455D !important;
+}
+
+:host ::ng-deep .ng-select.ng-select-multiple .ng-select-container .ng-value-container .ng-value {
+  background: #475569 !important;
+  color: #ffffff !important;
+  border-radius: 4px;
+}
+
+:host ::ng-deep .ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected,
+.ng-dropdown-panel .ng-dropdown-panel-items .ng-option.ng-option-selected.ng-option-marked {
+  background-color: #475569 !important;
+  color: #ffffff !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.password-criteria {
+  background-color: #F3F4F6;
+  padding: 1rem;
+  border-radius: 10px;
+}

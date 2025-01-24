@@ -26,6 +26,16 @@ export class CustodyComponent {
   isChecked:boolean = false;
   
 
+  /**
+   * Component constructor
+   * @param router Angular's Router for navigation
+   * @param route Angular's ActivatedRoute to get the current route's parameters
+   * @param formService Service to get the form data
+   * @param appService General application service
+   * @param httpClient Angular's HttpClient for making API calls
+   * @param toastService Service to show toast notifications
+   * @param authService Service to perform authentication
+   */
   constructor(
       private router: Router,
       private route: ActivatedRoute,
@@ -71,6 +81,14 @@ export class CustodyComponent {
     this.fetchStates();
   }
 
+/**
+ * Fetches the list of states from the server.
+ * 
+ * This method sends an HTTP GET request to retrieve states with a specific
+ * country ID and status. The response data is assigned to the `states` property.
+ * If an error occurs, the `states` property is set to an empty array.
+ */
+
   fetchStates(){
     
     const token = this.authService.authToken;
@@ -86,6 +104,16 @@ export class CustodyComponent {
     );
   }
 
+  /**
+   * Retrieves the list of districts from the server when the state selection changes.
+   * 
+   * This method takes a single string parameter `type` which can be either 'present'
+   * or 'permanent'. Depending on the value of `type`, the selectedStateId is
+   * determined and used to send an HTTP GET request to retrieve the list of districts
+   * with the given state ID and status. The response data is assigned to either the
+   * `districts` or `pdistricts` property depending on the value of `type`. If an error
+   * occurs, the respective property is set to an empty array.
+   */
   onStateChange(type: string) {
       const selectedStateId =  (type === 'present') ? this.formData.value.state_id : this.formData.value.pstate_id;
   
@@ -115,6 +143,17 @@ export class CustodyComponent {
     }
   
   
+  /**
+   * Retrieves the list of blocks from the server when the district selection changes.
+   * 
+   * This method takes a single string parameter `type` which can be either 'present'
+   * or 'permanent'. Depending on the value of `type`, the selectedDistrictId is
+   * determined and used to send an HTTP GET request to retrieve the list of blocks
+   * with the given district ID and status. The response data is assigned to either the
+   * `blocks` or `pblocks` property depending on the value of `type`. If an error
+   * occurs, the respective property is set to an empty array.
+   * @param type The type of address. Can be either 'present' or 'permanent'
+   */
     onDistrictChange(type: string) {
       const selectedDistId =  (type === 'present') ? this.formData.value.district_id : this.formData.value.pdistrict_id;
       const token   = this.authService.authToken;
@@ -125,9 +164,6 @@ export class CustodyComponent {
         (response: any) => {
           if(this.isChecked){
             this.pblocks = this.blocks = response.data;
-      
-            
-            
           }else if(type=== 'present'){
             this.blocks = response.data;
           } else {
@@ -148,6 +184,17 @@ export class CustodyComponent {
       this.isFormSubmitInProgress = true;
     }
 
+  /**
+   * Handles the present address change event.
+   * 
+   * This method toggles the `isChecked` property and updates the permanent address
+   * form fields based on the value of `isChecked`. If `isChecked` is true, it will
+   * populate the permanent address fields with the values from the present address
+   * fields. If `isChecked` is false, it will clear the permanent address fields.
+   * 
+   * The method also calls the `onStateChange` and `onDistrictChange` methods to
+   * update the state and district dropdowns for the permanent address.
+   */
     onPresentAddressChange(){
       this.isChecked = !this.isChecked;
       if(this.isChecked){
@@ -164,6 +211,8 @@ export class CustodyComponent {
         this.formData.value.ppostalCode = this.formData.value.postalCode;
         this.formData.value.phouseno = this.formData.value.houseno;
         this.formData.value.pstreet = this.formData.value.street;
+        this.onStateChange('permanent');
+        this.onDistrictChange('permanent');
    
       }else{
         this.formData.value.pstate_id = '';

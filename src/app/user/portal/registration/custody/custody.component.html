@@ -96,69 +96,71 @@
                 (Please (✔) if permanent address is same as present address)
                 </label>
             </div> 
-            <h6 class="mt-4 h6-org">Permanent Address</h6>
+            <div class="section-a1">
+                <h6 class="mt-4 h6-org">Permanent Address</h6>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <label for="name">State <span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="pstate_id" (change)="onStateChange('permanent')" [value]="formData.value.pstate_id">
-                        <option value="">Select State</option>
-                        <option *ngFor="let state of states" [value]="state.id">{{ state.state_name }}</option>
-                    </select>
-                    <app-form-error [field]="formData.controls.pstate_id"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="name">District <span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="pdistrict_id" (change)="onDistrictChange('permanent')" [value]="formData.value.pdistrict_id">
-                        <option value="">Select District</option>
-                        <option *ngFor="let district of pdistricts" [value]="district.id">{{ district.district_name }}</option>
-                    </select>
-                    <app-form-error [field]="formData.controls.pdistrict_id"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="name">Block/ULB <span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="pblock_id" [value]="formData.value.pblock_id">
-                        <option value="">Select Block</option>
-                        <option *ngFor="let block of pblocks" [value]="block.id">{{ block.blockname }}</option>
-                    </select>
-                    <app-form-error [field]="formData.controls.pblock_id"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="name">Police station <span class="text-danger">*</span></label>
-                    <select class="form-control" formControlName="ppoliceStation">
-                        <option value="">Select Police station</option>
-                    </select>
-                    <app-form-error [field]="formData.controls.ppoliceStation"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="Ward">Village/Ward <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [value]="formData.value.pvillage" formControlName="pvillage"  placeholder="Village/Ward">
-                    <app-form-error [field]="formData.controls.pvillage"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="locality">Area/Locality <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [value]="formData.value.plocality" formControlName="plocality"  placeholder="Area/Locality">
-                    <app-form-error [field]="formData.controls.plocality"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="street">Street/Building <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [value]="formData.value.pbuilding" formControlName="pbuilding"  placeholder="Street/Building">
-                    <app-form-error [field]="formData.controls.pbuilding"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="postal_code">Postal Code <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [value]="formData.value.ppostalCode" formControlName="ppostalCode"  placeholder="Postal Code">
-                    <app-form-error [field]="formData.controls.ppostalCode"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="houseno">House No. <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [value]="formData.value.phouseno" formControlName="phouseno"  placeholder="House No.">
-                    <app-form-error [field]="formData.controls.phouseno"></app-form-error>
-                </div>
-                <div class="col-md-4">
-                    <label for="street">Street <span class="text-danger">*</span></label>
-                    <input type="text" class="form-control" [value]="formData.value.pstreet" formControlName="pstreet"  placeholder="Street">
-                    <app-form-error [field]="formData.controls.pstreet"></app-form-error>
+                <div class="row">
+                    <div class="col-md-4">
+                        <label for="name">State <span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="pstate_id" (change)="onStateChange('permanent')" [(ngModel)]="formData.value.pstate_id">
+                            <option value="">Select State</option>
+                            <option *ngFor="let state of states" [value]="state.id">{{ state.state_name }}</option>
+                        </select>
+                        <app-form-error [field]="formData.controls.pstate_id"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="name">District <span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="pdistrict_id" (change)="onDistrictChange('permanent')" [(ngModel)]="formData.value.pdistrict_id">
+                            <option value="">Select District</option>
+                            <option *ngFor="let district of pdistricts" [value]="district.id">{{ district.district_name }}</option>
+                        </select>
+                        <app-form-error [field]="formData.controls.pdistrict_id"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="name">Block/ULB <span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="pblock_id" [(ngModel)]="formData.value.pblock_id">
+                            <option value="">Select Block</option>
+                            <option *ngFor="let block of pblocks" [value]="block.id">{{ block.blockname }}</option>
+                        </select>
+                        <app-form-error [field]="formData.controls.pblock_id"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="name">Police station <span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="ppoliceStation">
+                            <option value="">Select Police station</option>
+                        </select>
+                        <app-form-error [field]="formData.controls.ppoliceStation"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="Ward">Village/Ward <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [value]="formData.value.pvillage" formControlName="pvillage"  placeholder="Village/Ward">
+                        <app-form-error [field]="formData.controls.pvillage"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="locality">Area/Locality <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [value]="formData.value.plocality" formControlName="plocality"  placeholder="Area/Locality">
+                        <app-form-error [field]="formData.controls.plocality"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="street">Street/Building <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [value]="formData.value.pbuilding" formControlName="pbuilding"  placeholder="Street/Building">
+                        <app-form-error [field]="formData.controls.pbuilding"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="postal_code">Postal Code <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [value]="formData.value.ppostalCode" formControlName="ppostalCode"  placeholder="Postal Code">
+                        <app-form-error [field]="formData.controls.ppostalCode"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="houseno">House No. <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [value]="formData.value.phouseno" formControlName="phouseno"  placeholder="House No.">
+                        <app-form-error [field]="formData.controls.phouseno"></app-form-error>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="street">Street <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control" [value]="formData.value.pstreet" formControlName="pstreet"  placeholder="Street">
+                        <app-form-error [field]="formData.controls.pstreet"></app-form-error>
+                    </div>
                 </div>
             </div>
             
